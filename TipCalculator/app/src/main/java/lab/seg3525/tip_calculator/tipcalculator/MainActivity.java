@@ -4,21 +4,34 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    private final static String SHARE_DIALOG_TAG = "YOURSHAREDIALOG";
+    private EditText price;
+    private EditText percentTip;
+    private EditText nbPersonnes;
+    private Button calculate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        price = (EditText)findViewById(R.id.priceText);
+        percentTip = (EditText)findViewById(R.id.tipPercentText);
+        nbPersonnes = (EditText)findViewById(R.id.nbPersonnesText);
+        calculate = (Button)findViewById(R.id.calculateButton);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -28,11 +41,24 @@ public class MainActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            //TODO: Go to Settings activity
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void calculate(View view) {
+        float bill = Float.valueOf(price.getText().toString());
+        int pers = Integer.valueOf(nbPersonnes.getText().toString());
+        float tip = (Float.valueOf(percentTip.getText().toString())/100) + 1;
+        float yourShare = (bill*tip/pers);
+        System.out.println("WOOOOOOOOO");
+        System.out.println("Your share is: " +yourShare +"$");
+        TipStatsDialog shareDialog = new TipStatsDialog();
+        shareDialog.setShare(yourShare);
+        shareDialog.show(getFragmentManager(), SHARE_DIALOG_TAG);
+
     }
 }

@@ -1,11 +1,137 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/base"
+    android:weightSum="1"
+    android:baselineAligned="false">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
-</RelativeLayout>
+    <Space
+        android:layout_width="20dp"
+        android:layout_height="100dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp" />
+
+    <RelativeLayout android:id="@+id/priceLayout"
+        android:layout_gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_span="70">
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Prix"
+            android:id="@+id/priceView"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="256dp"></TextView>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="4"
+            android:id="@+id/priceText"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/priceView"
+            android:enabled="true" />
+    </RelativeLayout>
+
+    <Space
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp" />
+
+    <RelativeLayout android:id="@+id/tipPercentLayout"
+        android:layout_gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_span="70">
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="% Tip"
+            android:id="@+id/tipPercentView"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="242dp"
+            android:autoText="false"></TextView>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="4"
+            android:id="@+id/tipPercentText"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/tipPercentView" />
+    </RelativeLayout>
+
+    <Space
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp" />
+
+    <RelativeLayout android:id="@+id/nbPersonnesLayout"
+        android:layout_gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_span="70">
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="# Personnes"
+            android:id="@+id/nbPersonnesView"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="175dp"></TextView>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="4"
+            android:id="@+id/nbPersonnesText"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/nbPersonnesView" />
+    </RelativeLayout>
+
+    <Space
+        android:layout_width="20dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calculate Share"
+        android:id="@+id/calculateButton"
+        android:layout_column="12"
+        android:layout_marginLeft="210dp"
+        android:layout_marginRight="210dp"
+        android:onClick="calculate"/>
+
+</TableLayout>
