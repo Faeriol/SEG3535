@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Space
+        android:layout_width="20dp"
+        android:layout_height="100dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp" />
+
+    <RelativeLayout android:id="@+id/defaultTipLayout"
+        android:layout_gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_span="70">
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Default Tip"
+            android:id="@+id/defaultTipView"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/space"></TextView>
+
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:id="@+id/space" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="4"
+            android:id="@+id/defaultTipTextText"
+            android:enabled="true"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/space" />
+    </RelativeLayout>
+
+    <Space
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp" />
+
+    <RelativeLayout android:id="@+id/defaultCurrencyLayout"
+        android:layout_gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_span="70">
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Default Currency"
+            android:id="@+id/defaultCurrencyView"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/space1"></TextView>
+
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:id="@+id/space1" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/defaultCurrencySpinner"
+            android:spinnerMode="dropdown"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/space1" />
+    </RelativeLayout>
+
+</TableLayout>
