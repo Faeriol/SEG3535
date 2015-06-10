@@ -1,5 +1,6 @@
 package lab.seg3525.tip_calculator.tipcalculator;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -43,6 +44,8 @@ public class MainActivity extends ActionBarActivity {
 
         if (id == R.id.action_settings) {
             //TODO: Go to Settings activity
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
             return true;
         }
 
@@ -50,15 +53,22 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void calculate(View view) {
+        // Alternatively, follow heuristics better and disallow click if fields are empty
+        if(price.getText().toString().isEmpty() || nbPersonnes.getText().toString().isEmpty() || percentTip.getText().toString().isEmpty()){
+            ProblemDialog problem = new ProblemDialog();
+            problem.show(getFragmentManager(), SHARE_DIALOG_TAG);
+            return;
+        }
         float bill = Float.valueOf(price.getText().toString());
         int pers = Integer.valueOf(nbPersonnes.getText().toString());
         float tip = (Float.valueOf(percentTip.getText().toString())/100) + 1;
         float yourShare = (bill*tip/pers);
-        System.out.println("WOOOOOOOOO");
         System.out.println("Your share is: " +yourShare +"$");
         TipStatsDialog shareDialog = new TipStatsDialog();
         shareDialog.setShare(yourShare);
         shareDialog.show(getFragmentManager(), SHARE_DIALOG_TAG);
 
     }
+
+
 }
