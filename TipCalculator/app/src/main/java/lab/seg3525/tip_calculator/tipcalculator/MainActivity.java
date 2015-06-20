@@ -1,13 +1,15 @@
 package lab.seg3525.tip_calculator.tipcalculator;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import java.text.DecimalFormat;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -60,12 +62,24 @@ public class MainActivity extends ActionBarActivity {
             return;
         }
         float bill = Float.valueOf(price.getText().toString());
-        int pers = Integer.valueOf(nbPersonnes.getText().toString());
+        int pers = Integer.valueOf( nbPersonnes.getText().toString());
         float tip = (Float.valueOf(percentTip.getText().toString())/100) + 1;
-        float yourShare = (bill*tip/pers);
-        System.out.println("Your share is: " +yourShare +"$");
+
+        DecimalFormat df = new DecimalFormat("0.00");
+        String billString = df.format(bill);
+        String totalAmout = df.format(bill*tip);
+        String totalTip = df.format(bill*(tip-1));
+        String tipPerPerson = df.format(bill*(tip-1)/pers);
+        String billPerPerson = df.format(bill*tip/pers);
+
         TipStatsDialog shareDialog = new TipStatsDialog();
-        shareDialog.setShare(yourShare);
+
+        shareDialog.setBill(billString);
+        shareDialog.setTotalAmout(totalAmout);
+        shareDialog.setTotalTip(totalTip);
+        shareDialog.setTipPerPerson(tipPerPerson);
+        shareDialog.setBillPerPerson(billPerPerson);
+
         shareDialog.show(getFragmentManager(), SHARE_DIALOG_TAG);
 
     }
