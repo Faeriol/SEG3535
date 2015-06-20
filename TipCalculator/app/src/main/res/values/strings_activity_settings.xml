@@ -3,10 +3,14 @@
 
     <!-- Strings related to Settings -->
 
+    <string name="pound">£</string>
+    <string name="dollar">$</string>
+    <string name="euro">€</string>
+
     <string-array name="currencies_array">
-        <item>$</item>
-        <item>£</item>
-        <item>€</item>
+        <item>@string/pound</item>
+        <item>@string/dollar</item>
+        <item>@string/euro</item>
     </string-array>
 
 </resources>

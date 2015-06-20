@@ -1,6 +1,8 @@
 package lab.seg3525.tip_calculator.tipcalculator;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,24 +10,31 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
 
     private final static String SHARE_DIALOG_TAG = "YOURSHAREDIALOG";
+    private SharedPreferences sp;
     private EditText price;
     private EditText percentTip;
     private EditText nbPersonnes;
     private Button calculate;
+    private String currency;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sp = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         setContentView(R.layout.activity_main);
         price = (EditText)findViewById(R.id.priceText);
         percentTip = (EditText)findViewById(R.id.tipPercentText);
         nbPersonnes = (EditText)findViewById(R.id.nbPersonnesText);
         calculate = (Button)findViewById(R.id.calculateButton);
+        percentTip.setText(sp.getString("pref_default_tip", "15"));
+        currency = sp.getString("pref_currency", "$");
+        ((TextView)findViewById(R.id.priceView)).setText("Prix (" + currency + ")");
     }
 
     @Override
@@ -36,6 +45,14 @@ public class MainActivity extends ActionBarActivity {
     }
 
     @Override
+    public void onResume(){ // We want to intercept the call and check the preferences
+        super.onResume();
+        percentTip.setText(sp.getString("pref_default_tip", "15"));
+        currency = sp.getString("pref_currency", "$");
+        ((TextView)findViewById(R.id.priceView)).setText("Prix (" + currency + ")");
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -43,7 +60,6 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
-            //TODO: Go to Settings activity
             Intent intent = new Intent(this, SettingsActivity.class);
             startActivity(intent);
             return true;
@@ -63,12 +79,10 @@ public class MainActivity extends ActionBarActivity {
         int pers = Integer.valueOf(nbPersonnes.getText().toString());
         float tip = (Float.valueOf(percentTip.getText().toString())/100) + 1;
         float yourShare = (bill*tip/pers);
-        System.out.println("Your share is: " +yourShare +"$");
+        //System.out.println("Your share is: " + yourShare + currency); // Debug
         TipStatsDialog shareDialog = new TipStatsDialog();
         shareDialog.setShare(yourShare);
         shareDialog.show(getFragmentManager(), SHARE_DIALOG_TAG);
 
     }
-
-
 }
