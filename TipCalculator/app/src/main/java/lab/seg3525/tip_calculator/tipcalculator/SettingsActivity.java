@@ -1,30 +1,27 @@
 package lab.seg3525.tip_calculator.tipcalculator;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
-import android.support.v7.app.ActionBarActivity;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-
-import java.util.ArrayList;
-import java.util.List;
+import android.preference.PreferenceManager;
+import android.widget.EditText;
 
 
-public class SettingsActivity extends ActionBarActivity {
+public class SettingsActivity extends PreferenceActivity{
 
-    private static final boolean ALWAYS_SIMPLE_PREFS = false;
+    private static final String TIP = "pref_default_tip";
+    private static final String CURRENCY = "pref_currency";
 
+    private SharedPreferences sp;
+    private EditText percentTip;
+    private String currency;
 
     @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-
-        setContentView(R.layout.settings);
-
-        final Spinner sp=(Spinner) findViewById(R.id.defaultCurrencySpinner);
-        ArrayAdapter<CharSequence> adp = ArrayAdapter.createFromResource(this, R.array.currencies_array, android.R.layout.simple_spinner_item);
-        adp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sp.setAdapter(adp);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        sp = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        percentTip = (EditText)findViewById(R.id.tipPercentText);
+        addPreferencesFromResource(R.xml.preferences);
     }
 
 }
