@@ -1,13 +1,16 @@
 package lab.seg3525.tip_calculator.tipcalculator;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.text.DecimalFormat;
 
@@ -18,16 +21,32 @@ public class MainActivity extends ActionBarActivity {
     private EditText price;
     private EditText percentTip;
     private EditText nbPersonnes;
+    private TextView currencyText;
     private Button calculate;
+    private String currency;
+    private String defaultTip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        currencyText = (TextView) findViewById(R.id.currency);
+        currencyText.setText(currency);
         price = (EditText)findViewById(R.id.priceText);
         percentTip = (EditText)findViewById(R.id.tipPercentText);
         nbPersonnes = (EditText)findViewById(R.id.nbPersonnesText);
         calculate = (Button)findViewById(R.id.calculateButton);
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        defaultTip = prefs.getString("defaultTip", "");
+        currency = prefs.getString("currency","$");
+        currencyText.setText(currency);
+        percentTip.setText(defaultTip);
     }
 
     @Override

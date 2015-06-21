@@ -7,6 +7,7 @@
     android:baselineAligned="false">
 
 
+
     <Space
         android:layout_width="20dp"
         android:layout_height="100dp"
@@ -15,29 +16,25 @@
         android:layout_marginStart="0dp" />
 
     <RelativeLayout android:id="@+id/priceLayout"
-        android:layout_gravity="center"
+        android:layout_gravity="left"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_span="70">
-
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Prix"
-            android:id="@+id/priceView"
-            android:layout_centerVertical="true"
-            android:layout_toStartOf="@+id/space"></TextView>
 
         <Space
             android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_height="10dp"
             android:layout_alignParentTop="true"
-            android:layout_centerInParent="true"
-            android:id="@+id/space" />
+            android:id="@+id/space1" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Prix"
+            android:paddingLeft="20dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp"
+            android:id="@+id/priceView"></TextView>
 
         <EditText
             android:layout_width="wrap_content"
@@ -46,8 +43,17 @@
             android:ems="4"
             android:id="@+id/priceText"
             android:enabled="true"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/space" />
+            android:layout_toRightOf="@id/priceView"
+            android:layout_alignParentTop="true" />
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/currency"
+    android:textAppearance="?android:attr/textAppearanceLarge"
+    android:paddingTop="5dp"
+    android:paddingLeft="5dp"
+    android:layout_toRightOf="@id/priceText"/>
+
     </RelativeLayout>
 
     <Space
@@ -74,15 +80,10 @@
             android:id="@+id/tipPercentView"
             android:autoText="false"
             android:layout_alignParentTop="false"
-            android:layout_toStartOf="@+id/space2"
+            android:paddingLeft="20dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp"
             android:layout_centerVertical="true"></TextView>
-
-        <Space
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerInParent="true"
-            android:id="@+id/space2" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -91,8 +92,7 @@
             android:ems="4"
             android:id="@+id/tipPercentText"
             android:layout_alignParentTop="false"
-            android:layout_toEndOf="@+id/space2"
-            android:layout_centerVertical="true" />
+            android:layout_toRightOf="@id/tipPercentView"/>
     </RelativeLayout>
 
     <Space
@@ -117,16 +117,10 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="# Personnes"
             android:id="@+id/nbPersonnesView"
-            android:layout_toStartOf="@+id/space3"
-            android:layout_centerVertical="true"></TextView>
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:paddingRight="10dp"></TextView>
 
-        <Space
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentBottom="false"
-            android:layout_alignParentStart="false"
-            android:layout_centerInParent="true"
-            android:id="@+id/space3" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -135,7 +129,7 @@
             android:ems="4"
             android:id="@+id/nbPersonnesText"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/space3" />
+            android:layout_toRightOf="@id/nbPersonnesView"/>
 
     </RelativeLayout>
 
