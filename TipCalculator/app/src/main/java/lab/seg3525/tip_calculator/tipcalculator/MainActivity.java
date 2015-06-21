@@ -1,6 +1,7 @@
 package lab.seg3525.tip_calculator.tipcalculator;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -80,34 +81,30 @@ public class MainActivity extends ActionBarActivity{
 
         LayoutInflater inflater = LayoutInflater.from(this);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(null);
         View customDialogView = inflater.inflate(R.layout.rating_dialog, null, false);
         final RatingBar ratingBar = (RatingBar) customDialogView.findViewById(R.id.ratingBar);
         builder.setView(customDialogView);
+
+        int tipPercentage;
+        
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                int tipPercentage = (int) (10 + (ratingBar.getRating() * 2));
+                Toast.makeText(getApplicationContext(), "Tip is now : " + tipPercentage + " %",
+                        Toast.LENGTH_SHORT).show();
+
+                percentTip.setText("" + tipPercentage);
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+            }
+        });
+
         final AlertDialog mAlertDialog = builder.create();
         mAlertDialog.show();
-
-        Button confirm = (Button) customDialogView.findViewById(R.id.okRating);
-        Button cancel = (Button) customDialogView.findViewById(R.id.cancelRating);
-        int tipPercentage;
-        confirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int tipPercentage =(int) (10 + (ratingBar.getRating() *2 ));
-                Toast.makeText(getApplicationContext(), "Tip is now : " + tipPercentage + " %",
-                        Toast.LENGTH_LONG).show();
-
-                percentTip.setText(""+ tipPercentage);
-                mAlertDialog.cancel();
-            }
-        });
-
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mAlertDialog.cancel();
-            }
-        });
     }
 
     public void calculate(View view) {
