@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <EditTextPreference
+        android:title="Default Tip"
+        android:key="defaultTip"
+        android:summary="Please provide your default tip">
+    </EditTextPreference>
+
+    <ListPreference
+        android:title="Default Currency"
+        android:summary="Select the default currency for your bills"
+        android:key="currency"
+        android:defaultValue="1"
+        android:entries="@array/listCurrency"
+        android:entryValues="@array/listValues" />
+
+
+
+</PreferenceScreen>
+
