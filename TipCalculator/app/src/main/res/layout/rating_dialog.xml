@@ -3,23 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <TextView android:id="@+id/tvTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="7dp"
-        android:text="Tip Recommendation"
-        android:textAppearance="@android:style/TextAppearance.Large.Inverse"
-        android:gravity="left|center_vertical"
-        android:textStyle="bold"
-        android:shadowColor="@android:color/black"
-        android:shadowRadius="2"
-        android:background="@color/material_blue_grey_800"
-        android:drawablePadding="10dp" />
-
     <TextView android:id="@+id/tvContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvTitle"
         android:text="Please rate the restaurant"
         android:textAppearance="@android:style/TextAppearance.Large"
         android:gravity="center"
@@ -47,20 +33,6 @@
         android:gravity="center"
         android:layout_below="@id/space">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:id="@+id/cancelRating"
-            android:text="Cancel"
-            />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:id="@+id/okRating"
-            android:text="ok"
-            />
     </LinearLayout>
 
 
