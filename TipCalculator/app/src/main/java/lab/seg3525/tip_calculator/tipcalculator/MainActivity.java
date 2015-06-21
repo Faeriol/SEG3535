@@ -1,21 +1,25 @@
 package lab.seg3525.tip_calculator.tipcalculator;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity{
 
     private final static String SHARE_DIALOG_TAG = "YOURSHAREDIALOG";
     private EditText price;
@@ -69,8 +73,41 @@ public class MainActivity extends ActionBarActivity {
             startActivity(intent);
             return true;
         }
-
         return super.onOptionsItemSelected(item);
+    }
+
+    public void recommendTip(View view){
+
+        LayoutInflater inflater = LayoutInflater.from(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(null);
+        View customDialogView = inflater.inflate(R.layout.rating_dialog, null, false);
+        final RatingBar ratingBar = (RatingBar) customDialogView.findViewById(R.id.ratingBar);
+        builder.setView(customDialogView);
+        final AlertDialog mAlertDialog = builder.create();
+        mAlertDialog.show();
+
+        Button confirm = (Button) customDialogView.findViewById(R.id.okRating);
+        Button cancel = (Button) customDialogView.findViewById(R.id.cancelRating);
+        int tipPercentage;
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int tipPercentage =(int) (10 + (ratingBar.getRating() *2 ));
+                Toast.makeText(getApplicationContext(), "Tip is now : " + tipPercentage + " %",
+                        Toast.LENGTH_LONG).show();
+
+                percentTip.setText(""+ tipPercentage);
+                mAlertDialog.cancel();
+            }
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAlertDialog.cancel();
+            }
+        });
     }
 
     public void calculate(View view) {
@@ -98,10 +135,10 @@ public class MainActivity extends ActionBarActivity {
         shareDialog.setTotalTip(totalTip);
         shareDialog.setTipPerPerson(tipPerPerson);
         shareDialog.setBillPerPerson(billPerPerson);
+        shareDialog.setCurrency(currency);
 
         shareDialog.show(getFragmentManager(), SHARE_DIALOG_TAG);
 
     }
-
 
 }
