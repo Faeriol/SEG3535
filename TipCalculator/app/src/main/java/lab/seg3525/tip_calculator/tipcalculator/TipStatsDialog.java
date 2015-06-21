@@ -16,17 +16,18 @@ public class TipStatsDialog extends DialogFragment {
     private String totalTip;
     private String tipPerPerson;
     private String billPerPerson;
+    private String currency;
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the Builder class for convenient dialog construction
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Summary")
-                .setMessage("The total bill is : " + bill + "\n" +
-                        "The total tip is : " + totalTip + "\n" +
-                        "The total amount is : " + totalAmout + "\n" +
+                .setMessage("The total bill is : " + bill + " "+ currency + "\n" +
+                        "The total tip is : " + totalTip + " "+ currency + "\n" +
+                        "The total amount is : " + totalAmout + " "+ currency + "\n" +
                         "\n" +
-                        "Tip per person : " + tipPerPerson + "\n" +
-                        "Bill per person : " + billPerPerson)
+                        "Tip per person : " + tipPerPerson + " "+ currency + "\n" +
+                        "Bill per person : " + billPerPerson+ " "+ currency)
                 .setPositiveButton("Thanks", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // What do we do now?
@@ -62,5 +63,12 @@ public class TipStatsDialog extends DialogFragment {
     public void setBillPerPerson(String billPerPerson) {
         this.billPerPerson = billPerPerson;
     }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+
+
 
 }

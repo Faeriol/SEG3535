@@ -10,10 +10,25 @@
 
     <Space
         android:layout_width="20dp"
-        android:layout_height="100dp"
+        android:layout_height="20dp"
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true"
         android:layout_marginStart="0dp" />
+
+    <TextView
+        android:text="Welcome to Tip Calculator\n"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:paddingLeft="5dp"
+        />
+
+    <Space
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp" />
+
 
     <RelativeLayout android:id="@+id/priceLayout"
         android:layout_gravity="left"
@@ -31,7 +46,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Prix"
-            android:paddingLeft="20dp"
+            android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="5dp"
             android:id="@+id/priceView"></TextView>
@@ -80,7 +95,7 @@
             android:id="@+id/tipPercentView"
             android:autoText="false"
             android:layout_alignParentTop="false"
-            android:paddingLeft="20dp"
+            android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="5dp"
             android:layout_centerVertical="true"></TextView>
@@ -93,6 +108,15 @@
             android:id="@+id/tipPercentText"
             android:layout_alignParentTop="false"
             android:layout_toRightOf="@id/tipPercentView"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tipPercentText"
+            android:text="Recommend a tip"
+            android:layout_marginLeft="5dp"
+            android:onClick="recommendTip"/>
+        
     </RelativeLayout>
 
     <Space
@@ -117,7 +141,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="# Personnes"
             android:id="@+id/nbPersonnesView"
-            android:paddingLeft="20dp"
+            android:paddingLeft="10dp"
             android:paddingTop="5dp"
             android:paddingRight="10dp"></TextView>
 
@@ -141,17 +165,15 @@
         android:layout_marginStart="0dp" />
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Calculate Share"
+            android:text="Calculate"
             android:id="@+id/calculateButton"
-            android:layout_column="12"
-            android:layout_marginLeft="210dp"
-            android:layout_marginRight="210dp"
+            android:layout_marginLeft="20dp"
             android:onClick="calculate"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
