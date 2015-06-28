@@ -1,10 +1,10 @@
-package ca.uottawa.site.seg23525.projet.pillmanager.data.model;
+package ca.uottawa.site.seg23525.projet.pillmanager.data.model.Medical;
 
 /**
  * A representation of a Brand
  * @author faeriol
  */
-public class Brand {
+public abstract class Brand {
     private String name;
 
     public Brand(String name){

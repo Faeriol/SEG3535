@@ -13,6 +13,7 @@ public class HelpActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //We can probably pickup where we were at to offer context
         setContentView(R.layout.activity_help);
     }
 

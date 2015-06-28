@@ -1,17 +1,20 @@
-package ca.uottawa.site.seg23525.projet.pillmanager.data.model.SQLite;
+package ca.uottawa.site.seg23525.projet.pillmanager.data.model.Medical.SQLite;
 
 import java.util.Set;
 
-import ca.uottawa.site.seg23525.projet.pillmanager.data.model.Ailment;
+import ca.uottawa.site.seg23525.projet.pillmanager.data.model.Medical.Brand;
 import ca.uottawa.site.seg23525.projet.pillmanager.data.persist.SQLite.SQLitePersistable;
 
 /**
- * A persistable Version of Ailment
- * @author faeriol
+ * Created by faeriol on 28/06/15.
  */
-public class SQLiteAilment extends Ailment implements SQLitePersistable {
+public class SQLiteBrand extends Brand implements SQLitePersistable<Brand>{
 
     private int id;
+
+    public SQLiteBrand(String name){
+        super(name);
+    }
 
     @Override
     public int getID() {
@@ -29,7 +32,7 @@ public class SQLiteAilment extends Ailment implements SQLitePersistable {
     }
 
     @Override
-    public Set retrieveMany() {
+    public Set<Brand> retrieveMany() {
         return null;
     }
 }
