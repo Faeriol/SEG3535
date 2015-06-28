@@ -5,6 +5,7 @@ package ca.uottawa.site.seg23525.projet.pillmanager.data.model.Medical;
  */
 public abstract class BrandMedication extends Medication {
     private Brand brand;
+    private byte[] picture;
 
     public BrandMedication(Medication medication, Brand brand){
         super(medication);
@@ -15,5 +16,12 @@ public abstract class BrandMedication extends Medication {
         return brand;
     }
 
+    public byte[] getPicture(){
+        return picture;
+    }
+
+    public void setPicture(byte[] picture){
+        this.picture = picture;
+    }
 
 }
