@@ -7,7 +7,13 @@ import android.view.MenuItem;
 
 import ca.uottawa.site.seg23525.projet.pillmanager.R;
 
+//http://medlibrary.org/
+//QueryStrings looks like http://medlibrary.org/lib/rx/meds/
+//May try to setup a JSON-RPC service for it. Max
 
+/**
+ * An activity to Handle wiki information and searches
+ */
 public class WikiActivity extends Activity {
 
     @Override

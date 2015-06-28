@@ -1,14 +1,17 @@
-package ca.uottawa.site.seg23525.projet.pillmanager.data.model;
+package ca.uottawa.site.seg23525.projet.pillmanager.data.model.Medical;
+
+import android.provider.CalendarContract;
 
 /**
  * Represents some prescribed medication
  * @author faeriol
  */
-public class PrescribedMedication {
+public abstract class PrescribedMedication {
     private BrandMedication medication;
     private float dosage;
+    private CalendarContract.Events schedule;
 
-    protected PrescribedMedication(BrandMedication medication, float dosage){
+    public PrescribedMedication(BrandMedication medication, float dosage){
         this.medication = medication;
         this.dosage = dosage;
     }
@@ -29,5 +32,9 @@ public class PrescribedMedication {
         }
         return false;
     }
+
+    public void setSchedule(CalendarContract.Events schedule){ this.schedule=schedule; }
+
+    public CalendarContract.Events getSchedule(){ return schedule;}
 
 }
