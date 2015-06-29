@@ -7,6 +7,7 @@ import ca.uottawa.site.seg23525.projet.pillmanager.data.model.Medical.Prescribed
  * @author faeriol
  */
 public abstract class IntakeInfo {
-    PrescribedMedication medication;
-
+    private PrescribedMedication medication;
+    private boolean taken; // Whether this scheduled medication was taken
+    private int delay; // The delay (in seconds) after which the medication was taken
 }

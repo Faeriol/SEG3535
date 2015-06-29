@@ -2,6 +2,8 @@ package ca.uottawa.site.seg23525.projet.pillmanager.data.model.Logs;
 
 import android.provider.CalendarContract;
 
+import java.util.Date;
+
 import ca.uottawa.site.seg23525.projet.pillmanager.data.model.Medical.Brand;
 import ca.uottawa.site.seg23525.projet.pillmanager.data.model.Medical.PrescribedMedication;
 
@@ -10,7 +12,9 @@ import ca.uottawa.site.seg23525.projet.pillmanager.data.model.Medical.Prescribed
  */
 public abstract class PrescriptionChange {
     private PrescribedMedication medication;
-    private Brand previous;
+    private Date date;
+    private Brand from;
+    private Brand to;
     private float dosageDelta;
     private CalendarContract.Events eventChange;
 }
