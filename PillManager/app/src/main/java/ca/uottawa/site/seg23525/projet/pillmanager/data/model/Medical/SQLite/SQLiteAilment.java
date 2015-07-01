@@ -13,23 +13,13 @@ public class SQLiteAilment extends Ailment implements SQLitePersistable {
 
     private int id;
 
+    public SQLiteAilment(String description) {
+        super(description);
+    }
+
     @Override
     public int getID() {
         return id;
     }
 
-    @Override
-    public boolean persist() {
-        return false;
-    }
-
-    @Override
-    public boolean retrieveOne() {
-        return false;
-    }
-
-    @Override
-    public Set retrieveMany() {
-        return null;
-    }
 }

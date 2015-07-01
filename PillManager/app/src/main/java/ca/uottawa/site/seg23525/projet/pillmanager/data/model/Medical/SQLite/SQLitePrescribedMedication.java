@@ -7,9 +7,9 @@ import ca.uottawa.site.seg23525.projet.pillmanager.data.model.Medical.Prescribed
 import ca.uottawa.site.seg23525.projet.pillmanager.data.persist.SQLite.SQLitePersistable;
 
 /**
- * Created by faeriol on 28/06/15.
+ * @author faeriol on 28/06/15.
  */
-public class SQLitePrescribedMedication extends PrescribedMedication implements SQLitePersistable<PrescribedMedication>{
+public class SQLitePrescribedMedication extends PrescribedMedication implements SQLitePersistable{
 
     private int id;
 
@@ -22,18 +22,4 @@ public class SQLitePrescribedMedication extends PrescribedMedication implements 
         return id;
     }
 
-    @Override
-    public boolean persist() {
-        return false;
-    }
-
-    @Override
-    public boolean retrieveOne() {
-        return false;
-    }
-
-    @Override
-    public Set<PrescribedMedication> retrieveMany() {
-        return null;
-    }
 }

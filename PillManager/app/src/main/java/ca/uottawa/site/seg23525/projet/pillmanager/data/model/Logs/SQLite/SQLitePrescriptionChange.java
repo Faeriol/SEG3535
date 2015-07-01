@@ -8,7 +8,7 @@ import ca.uottawa.site.seg23525.projet.pillmanager.data.persist.SQLite.SQLitePer
 /**
  * Created by faeriol on 28/06/15.
  */
-public class SQLitePrescriptionChange extends PrescriptionChange implements SQLitePersistable<PrescriptionChange> {
+public class SQLitePrescriptionChange extends PrescriptionChange implements SQLitePersistable {
 
     private int id;
 
@@ -17,18 +17,4 @@ public class SQLitePrescriptionChange extends PrescriptionChange implements SQLi
         return id;
     }
 
-    @Override
-    public boolean persist() {
-        return false;
-    }
-
-    @Override
-    public boolean retrieveOne() {
-        return false;
-    }
-
-    @Override
-    public Set<PrescriptionChange> retrieveMany() {
-        return null;
-    }
 }

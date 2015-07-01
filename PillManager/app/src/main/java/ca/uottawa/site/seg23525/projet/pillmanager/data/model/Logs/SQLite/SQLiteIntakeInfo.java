@@ -8,7 +8,7 @@ import ca.uottawa.site.seg23525.projet.pillmanager.data.persist.SQLite.SQLitePer
 /**
  * Created by faeriol on 28/06/15.
  */
-public class SQLiteIntakeInfo extends IntakeInfo implements SQLitePersistable<IntakeInfo> {
+public class SQLiteIntakeInfo extends IntakeInfo implements SQLitePersistable {
 
     private int id;
 
@@ -17,18 +17,4 @@ public class SQLiteIntakeInfo extends IntakeInfo implements SQLitePersistable<In
         return id;
     }
 
-    @Override
-    public boolean persist() {
-        return false;
-    }
-
-    @Override
-    public boolean retrieveOne() {
-        return false;
-    }
-
-    @Override
-    public Set<IntakeInfo> retrieveMany() {
-        return null;
-    }
 }

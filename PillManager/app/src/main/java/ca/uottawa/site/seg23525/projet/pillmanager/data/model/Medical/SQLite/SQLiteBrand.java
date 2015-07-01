@@ -8,7 +8,7 @@ import ca.uottawa.site.seg23525.projet.pillmanager.data.persist.SQLite.SQLitePer
 /**
  * Created by faeriol on 28/06/15.
  */
-public class SQLiteBrand extends Brand implements SQLitePersistable<Brand>{
+public class SQLiteBrand extends Brand implements SQLitePersistable{
 
     private int id;
 
@@ -21,18 +21,4 @@ public class SQLiteBrand extends Brand implements SQLitePersistable<Brand>{
         return id;
     }
 
-    @Override
-    public boolean persist() {
-        return false;
-    }
-
-    @Override
-    public boolean retrieveOne() {
-        return false;
-    }
-
-    @Override
-    public Set<Brand> retrieveMany() {
-        return null;
-    }
 }
