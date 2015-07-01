@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 /**
- * Created by faeriol on 28/06/15.
+ * @author faeriol
  */
 public class SQLiteHelper extends SQLiteOpenHelper{
 
@@ -62,6 +62,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
                 "old_brand INTEGER REFERENCES brand," +
                 "new_brand INTEGER REFERENCES brand," +
                 "dosage_delta REAL);");
+
         // IntakeInfo
         db.execSQL("CREATE TABLE intake_info(" +
                 "_id INTEGER AUTOINCREMENT," +

@@ -3,6 +3,8 @@
 import httplib2
 from bs4 import BeautifulSoup
 import sys
+from flask import Flask
+app = Flask(__name__)
 
 #BASE_URL = "http://medlibrary.org/lib/rx/meds/"
 BASE_URL = "http://medlibrary.org/medwiki/"
@@ -14,30 +16,40 @@ def isBanned(s):
             return True
     return False
 
-
-if __name__=="__main__":
-    if len(sys.argv) <= 1:
-        print("Need an arg")
-        sys.exit()
-    print(BASE_URL +sys.argv[1])
+def getMedHTML(med):
+    #print(BASE_URL +sys.argv[1])
     http = httplib2.Http()
-    status, response = http.request(BASE_URL + sys.argv[1])
+    status, response = http.request(BASE_URL + med)
     soup = BeautifulSoup(response)
+    soup.header.extract()
+    [x.extract() for x in soup.findAll('form')]
+    [x.extract() for x in soup.findAll('style')]
+    [x.extract() for x in soup.findAll('link')]
+    [x.extract() for x in soup.findAll('input')]
+    [x.extract() for x in soup.findAll('script')]
+    [x.extract() for x in soup.findAll('footer')]
+    [x.extract() for x in soup.findAll('aside')]
+    [x.extract() for x in soup.findAll('li') if x.has_attr("class")]
     for h2 in soup.findAll("h2"):
         if h2.has_attr("class"):
+            h2.extract()
             continue
         if isBanned(h2):
+            h2.extract()
             continue
-        print(h2)
+        #print(h2)
         n = h2.next_sibling
         while n is not None:
             if n.name == "h2":
                 break
-            if n.name == "footer":
-                break
-            if n.name == "aside":
-                n = n.next_sibling
-                continue
-            print(n)
             n = n.next_sibling
-    #print(soup.prettify())
+    #print(out)
+    return str(soup)
+
+@app.route('/wiki/<medname>')
+def wiki(medname):
+    return getMedHTML(medname)
+
+if __name__=="__main__":
+    app.debug = True
+    app.run()
