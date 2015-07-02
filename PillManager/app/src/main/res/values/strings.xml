@@ -9,4 +9,5 @@
     <string name="title_activity_intake_history">IntakeHistoryActivity</string>
     <string name="title_activity_prescription_history">PrescriptionHistoryActivity</string>
     <string name="title_activity_help">HelpActivity</string>
+    <string name="action_search">Search</string>
 </resources>

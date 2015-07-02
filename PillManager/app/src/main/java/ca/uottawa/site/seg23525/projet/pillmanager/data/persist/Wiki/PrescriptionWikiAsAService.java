@@ -5,11 +5,16 @@ import java.io.*;
 
 /**
  * @author faeriol on 01/07/15.
+ * A MedWiki that relies on the MedWiki webserver which is part of this project
+ * MedWiki uses http://medlibrary.org/ as a Datasource
  */
 public class PrescriptionWikiAsAService implements PrescriptionDrugWiki {
 
+    public static final String DEFAULT_BASE_URL = "http://lanayru.faeriol.me";
+
     private String baseURL;
 
+    public PrescriptionWikiAsAService() {this.baseURL=DEFAULT_BASE_URL;}
     public PrescriptionWikiAsAService(String baseURL){
             this.baseURL = baseURL;
     }

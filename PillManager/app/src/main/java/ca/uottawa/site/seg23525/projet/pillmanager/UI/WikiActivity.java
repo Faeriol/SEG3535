@@ -6,19 +6,29 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import ca.uottawa.site.seg23525.projet.pillmanager.R;
+import ca.uottawa.site.seg23525.projet.pillmanager.data.persist.Wiki.PrescriptionDrugWiki;
+import ca.uottawa.site.seg23525.projet.pillmanager.data.persist.Wiki.PrescriptionWikiAsAService;
 
-//http://medlibrary.org/
-//QueryStrings looks like http://medlibrary.org/lib/rx/meds/
-//May try to setup a JSON-RPC service for it. Max
 
 /**
  * An activity to Handle wiki information and searches
+ * @author faeriol
  */
 public class WikiActivity extends Activity {
+
+    private PrescriptionDrugWiki wiki;
+
+    public WikiActivity(){
+        super();
+        wiki = new PrescriptionWikiAsAService();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(null==wiki){
+            wiki = new PrescriptionWikiAsAService();
+        }
         setContentView(R.layout.activity_wiki);
     }
 
