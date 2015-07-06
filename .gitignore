@@ -25,3 +25,7 @@ proguard/
 
 # Log Files
 *.log
+
+# Fix mac OS stupid
+
+.DS_Store
