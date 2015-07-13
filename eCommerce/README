@@ -1,5 +1,7 @@
 # Dependencies
 
-Flask
-Flask_Bootstrap
-Flask_wtf
+pip install -r requirements.txt
+
+Don't forget to add anything you import to that file!
+
+
