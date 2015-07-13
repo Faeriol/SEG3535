@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+{{util.flashed_messages()}}
+<div class="container">
+    <table border="1">
+    <tr>
+    {% for entry in result['header'] %}
+            <th> {{ entry }} </th>
+    {% endfor %}
+    </tr>
+    {% for row in result['data'] %}
+        <tr>
+        {% for field in row %}
+            <td> {{ field }} </th>
+        {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
+</div>
+{% endblock %}
+
+{% block head %}
+{{super()}}
+{% endblock %}
