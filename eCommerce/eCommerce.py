@@ -45,7 +45,7 @@ def delete():
 def cart():
     "Lets build a fake basket"
     cart = getData()
-    return render_template('cart.html', result={"header":HEADER,"data":cart})
+    return render_template('cart.html', content="cart", result={"header":HEADER,"data":cart})
 
 @app.route('/book/<id>') # Where ID's are actually ISBN
 def book(id):
@@ -88,7 +88,7 @@ def category(cat):
 @app.route('/')
 def index():
     # Need to display some crap here
-    return render_template("index.html")
+    return render_template("index.html", content="home")
 
 if __name__=="__main__":
     Bootstrap(app)
