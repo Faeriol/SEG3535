@@ -3,23 +3,27 @@
 {% block content %}
 {{util.flashed_messages()}}
 <div class="container bodystart">
-    <table class="table table-striped">
+  <h1>Here's the content of your cart</h1>
+  <table class="table table-striped">
     <tr>
     {% for entry in result['header'] %}
             <th> {{ entry }} </th>
     {% endfor %}
+        <th> Quantity </th>
+        <th> Delete </th>
     </tr>
     {% for row in result['data'] %}
         <tr>
         {% for field in row %}
             <td> {{ field }} </th>
         {% endfor %}
+            <td>1</td>
+            <td class="text-center"><input type="checkbox" name="myTextEditBox" value="checked" /></th>
         </tr>
     {% endfor %}
     </table>
+    <button type="checkout" class="btn btn-success">Checkout</button>
+    <button type="delete" class="btn btn-danger pull-right">Delete</button>
 </div>
 {% endblock %}
 
-{% block head %}
-{{super()}}
-{% endblock %}

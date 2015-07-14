@@ -11,6 +11,7 @@ from wtforms import TextField, HiddenField, ValidationError, RadioField,\
 from wtforms.validators import Required
 import csv
 
+# ID Fields in CSV... Yes this is dirty
 ISBN = 4
 CATEGORY = 2
 CATEGORIES = ["Science", "Technology", "Fantasy"]
@@ -24,6 +25,13 @@ def getData():
         for row in reader:
             result += [row]
     return result
+
+# Yeah I know this should have variables and whatnot but whatevs
+@app.route('/cart')
+def cart():
+    "Lets build a fake basket"
+    cart = getData()
+    return render_template('cart.html', result={"header":["Title", "Author", "Category", "Description", "ISBN" ],"data":cart})
 
 @app.route('/book/<id>') # Where ID's are actually ISBN
 def book(id):
