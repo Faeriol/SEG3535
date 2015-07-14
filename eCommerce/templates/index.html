@@ -2,9 +2,21 @@
 
 {% block content %}
 {{util.flashed_messages()}}
-<div class="container">
+<div class="container bodystart">
   <h1>Hey Guys, I need some love too!</h1>
 
 </div>
 {% endblock %}
 
+{% block head %}
+{{super()}}
+<style type="text/css"> <!-- We all know this should go in a css file but whatevs -->
+th, td {
+                padding: 10px;
+}
+.home active { 
+    color: inherit;    
+}
+
+</style>
+{% endblock %}
