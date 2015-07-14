@@ -12,9 +12,11 @@ from wtforms.validators import Required
 import csv
 
 # ID Fields in CSV... Yes this is dirty
+HEADER = ["Title", "Author", "Category", "Description", "ISBN", "Price" ]
 ISBN = 4
 CATEGORY = 2
 CATEGORIES = ["Science", "Technology", "Fantasy"]
+
 
 app = Flask(__name__)
 
@@ -31,7 +33,7 @@ def getData():
 def cart():
     "Lets build a fake basket"
     cart = getData()
-    return render_template('cart.html', result={"header":["Title", "Author", "Category", "Description", "ISBN" ],"data":cart})
+    return render_template('cart.html', result={"header":HEADER,"data":cart})
 
 @app.route('/book/<id>') # Where ID's are actually ISBN
 def book(id):
@@ -59,7 +61,7 @@ def search():
                 print("FOUND")
                 books += [book]
                 break
-    return render_template("search.html", result={"header":["Title", "Author", "Category", "Description", "ISBN" ],"data":books})
+    return render_template("search.html", result={"query":"'" +term +"'","header":HEADER,"data":books})
 
 @app.route('/category/<cat>')
 def category(cat):
