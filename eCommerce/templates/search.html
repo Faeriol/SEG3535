@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-{{util.flashed_messages()}}
-<div class="container bodystart">
+{{super()}}
+<div class="container">
+    {% if 'query' in result %}
+    <h1>Here are your search results for {{result['query']}}</h1>
+    {% endif %}
     <table class="table table-striped">
     <tr>
     {% for entry in result['header'] %}

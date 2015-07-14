@@ -35,6 +35,12 @@
 </div>
 {% endblock %}
 
+{% block content %}
+<div class="container bodystart">
+    {{util.flashed_messages()}}
+</div>
+{% endblock %}
+
 {% block head %}
 {{super()}}
 {{fixes.ie8()}}
