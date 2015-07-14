@@ -28,6 +28,18 @@ def getData():
             result += [row]
     return result
 
+def notDoneYet(feature):
+    return render_template('notdone.html', key=feature)
+
+# Future features
+@app.route('/checkout')
+def checkout():
+    return notDoneYet("Checkout")
+
+@app.route('/delete')
+def delete():
+    return notDoneYet("Delete")
+
 # Yeah I know this should have variables and whatnot but whatevs
 @app.route('/cart')
 def cart():
