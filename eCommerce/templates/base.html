@@ -6,7 +6,7 @@
 {% block navbar %}
 <div class="navbar navbar-default navbar-fixed-top navbar-header">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/">Home</a></li>
+        <li {% if "home" in content %} class="active" {%endif%}><a href="/">Home</a></li>
         <!-- <li><a href="#">Link</a></li> -->
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories <span class="caret"></span></a>
@@ -29,7 +29,7 @@
       </form>
       <div class="navbar-right"> <!-- Boostrap limition  http://getbootstrap.com/components/#navbar-component-alignment -->
         <ul class="nav navbar-nav">
-            <li class="a-cart"><a href="/cart">Cart</a></li>
+            <li {% if "cart" in content %} class="active" {%endif%}><a href="/cart">Cart</a></li>
         </ul>
       </div>  
 </div>
