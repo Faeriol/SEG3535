@@ -27,5 +27,7 @@ proguard/
 *.log
 
 # Fix mac OS stupid
-
 .DS_Store
+
+# Fix Vim stupid
+*.swp
