@@ -60,6 +60,7 @@ def book(id):
 def search():
     print(request)
     term = request.args.get('term')
+    found = False
     books = []
     if term == None:
         flash('Please use the search field to find content.', 'error')
@@ -71,19 +72,22 @@ def search():
         for field in book:
             if term in field:
                 print("FOUND")
+                found=True;
                 books += [book]
                 break
-    return render_template("search.html", result={"query":"'" +term +"'","header":HEADER,"data":books})
+    if(found):
+        return render_template("search.html", result={"query":"'" +term +"'","header":HEADER,"data":books})
+    else:
+        return render_template("search.html", result={"query":"'" +term +"'", "data":[]})
 
 @app.route('/category/<cat>')
 def category(cat):
-    result = []
+    books = []
     for book in getData():
-        if id == book[ISBN]:
-            result = book
-            break
+        if cat == book[Category]:
+            books += [book]
     # we has got partial feature... Put in some books
-    return render_template("category.html")
+    return render_template("category.html", result={"cat":cat, "data":books})
 
 @app.route('/')
 def index():
