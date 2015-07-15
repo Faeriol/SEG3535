@@ -104,11 +104,12 @@ def search():
 @app.route('/category/<cat>')
 def category(cat):
     books = []
+    cat=cat.title()
     for book in getData():
-        if cat == book[Category]:
+        if cat == book[CATEGORY]:
             books += [book]
     # we has got partial feature... Put in some books
-    return render_template("category.html", result={"cat":cat, "data":books})
+    return render_template("category.html", result={"cat":cat, "header":HEADER, "data":books})
 
 @app.route('/')
 def index():
