@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+{{super()}}
+<div class="container">
+	<h1>Here are the books for the category {{result['cat']}}</h1>
+	<table class="table table-striped">
+		<tr>
+			{% for entry in result['header'] %}
+			<th> {{ entry }} </th>
+			{% endfor %}
+		</tr>
+		{% for row in result['data'] %}
+		<tr>
+			{% for field in row %}
+			<td> {{ field }} </th>
+				{% endfor %}
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+{% endblock %}
+
+{% block head %}
+{{super()}}
+{% endblock %}

@@ -1,0 +1,14 @@
+# Dependencies
+
+pip install -r requirements.txt
+
+Don't forget to add anything you import to that file!
+
+# Usefull ref
+
+http://getbootstrap.com/css/
+http://pythonhosted.org/Flask-Bootstrap/basic-usage.html#sample-application
+
+# The content variable
+We use it to alter the class (display style) of the navbar content based on where we are in the app.
+Examples: home, cart

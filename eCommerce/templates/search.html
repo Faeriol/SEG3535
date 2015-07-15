@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+{{super()}}
+<div class="container">
+    {% if not result['data'] %}
+        <h1>There are no results for {{result['query']}}</h1>
+    {% else %}
+        {% if 'query' in result %}
+        <h1>Here are your search results for {{result['query']}}</h1>
+        {% endif %}
+        <table class="table table-striped">
+        <tr>
+        {% for entry in result['header'] %}
+                <th> {{ entry }} </th>
+        {% endfor %}
+        </tr>
+        {% for row in result['data'] %}
+            <tr>
+            <td><a href="/book/{{row[4]}}">{{row[0]}}</a> </th>
+            <td> {{ row[1] }} </th>
+            <td> {{ row[2] }} </th>
+            <td> {{ row[3] }} </th>
+            <td> {{ row[4] }} </th>
+            <td> {{ row[5] }} </th>
+            </tr>
+        {% endfor %}
+        </table>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block head %}
+{{super()}}
+{% endblock %}
