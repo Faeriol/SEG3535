@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block content %}
+{{super()}}
+<div class="container">
+  {{util.flashed_messages()}}
+  <h1>Hey! Look at those new book!</h1>
+  <table class="table table-striped">
+    <tr>
+    {% for entry in header %}
+            <th> {{ entry }} </th>
+    {% endfor %}
+    </tr>
+    {% for row in new %}
+        <tr>
+
+       
+            <td><a href="/book/{{row[4]}}">{{row[0]}}</a> </th>
+            <td> {{ row[1] }} </th>
+            <td> {{ row[2] }} </th>
+            <td> {{ row[3] }} </th>
+            <td> {{ row[4] }} </th>
+            <td> {{ row[5] }} </th>
+      
+        </tr>
+    {% endfor %}
+    </table>
+    <h1>Trending</h1>
+      <table class="table table-striped">
+    <tr>
+    {% for entry in header %}
+            <th> {{ entry }} </th>
+    {% endfor %}
+    </tr>
+    {% for row in trending %}
+        <tr>
+        <td><a href="/book/{{row[4]}}">{{row[0]}}</a> </th>
+        <td> {{ row[1] }} </th>
+        <td> {{ row[2] }} </th>
+        <td> {{ row[3] }} </th>
+        <td> {{ row[4] }} </th>
+        <td> {{ row[5] }} </th>
+        <tr>
+        </tr>
+    {% endfor %}
+    </table>
+
+    <h1>Bestselling... Like get those man...</h1>
+      <table class="table table-striped">
+    <tr>
+    {% for entry in header %}
+            <th> {{ entry }} </th>
+    {% endfor %}
+    </tr>
+    {% for row in bestselling %}
+        <tr>
+            <td><a href="/book/{{row[4]}}">{{row[0]}}</a> </th>
+            <td> {{ row[1] }} </th>
+            <td> {{ row[2] }} </th>
+            <td> {{ row[3] }} </th>
+            <td> {{ row[4] }} </th>
+            <td> {{ row[5] }} </th>
+        </tr>
+    {% endfor %}
+    </table>
+</div>
+{% endblock %}
+
+{% block head %}
+{{super()}}
+<style type="text/css"> <!-- We all know this should go in a css file but whatevs -->
+th, td {
+                padding: 10px;
+}
+.home active { 
+    color: inherit;    
+}
+
+</style>
+{% endblock %}

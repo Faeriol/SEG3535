@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container bodystart">
+  {{util.flashed_messages()}}
+  <h1>There was some problem with your request</h1>
+  <p> Ah man, it seems like we've not implemented '{{key}}' yet! Come back later! </p>
+
+</div>
+{% endblock %}
+
+{% block head %}
+{{super()}}
+<style type="text/css"> <!-- We all know this should go in a css file but whatevs -->
+th, td {
+                padding: 10px;
+}
+.home active { 
+    color: inherit;    
+}
+
+</style>
+{% endblock %}
