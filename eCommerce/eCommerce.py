@@ -14,19 +14,16 @@ import csv
 # ID Fields in CSV... Yes this is dirty
 HEADER = ["Title", "Author", "Category", "Description", "ISBN", "Price", "tags" ]
 TAGS = 6
+THEAD = HEADER[0:TAGS] # skip tags when displaying
 ISBN = 4
-THEAD = HEADER[0:ISBN] +[HEADER[ISBN+1]] # skip tags when displaying
 CATEGORY = 2
-CATEGORIES = ["Science", "Technology", "Fantasy", "Psychology"]
+CATEGORIES = ["Science", "Technology", "Fantasy"]
 
 
 app = Flask(__name__)
 
 def dropTags(row):
     return row[0:TAGS]
-
-def dropISBN(row):
-    return row[0:ISBN] +row[ISBN+1:]
 
 def extractTags(row):
     nrow = dropTags(row)
@@ -39,7 +36,7 @@ def getData():
     with open('data.csv') as data:
         reader = csv.reader(data, delimiter='|', quotechar='"', quoting=csv.QUOTE_ALL)
         for row in reader:
-            result += [dropISBN(dropTags(row))]
+            result += [dropTags(row)]
     return result
 
 def getDataWithTags():
@@ -56,7 +53,7 @@ def notDoneYet(feature):
 # Future features
 @app.route('/checkout')
 def checkout():
-    return notDoneYet("Checkout")
+    return render_template('checkout.html')
 
 @app.route('/delete')
 def delete():
@@ -93,13 +90,13 @@ def search():
         return render_template("search.html", result={"header":[],"data":[]})
     for book in getData():
         for field in book:
-            if term.lower() in field.lower():
+            if term in field:
                 print("FOUND")
                 found=True;
                 books += [book]
                 break
     if(found):
-        return render_template("search.html", result={"query":"'" +term +"'","header":THEAD,"data":books})
+        return render_template("search.html", result={"query":"'" +term +"'","header":HEADER,"data":books})
     else:
         return render_template("search.html", result={"query":"'" +term +"'", "data":[]})
 
@@ -112,25 +109,12 @@ def category(cat):
         if cat == book[CATEGORY]:
             books += [book]
     # we has got partial feature... Put in some books
-    return render_template("category.html", result={"cat":cat, "header":THEAD, "data":books})
-
-def clean(row):
-    return dropISBN(dropTags(row))
+    return render_template("category.html", result={"cat":cat, "header":HEADER, "data":books})
 
 @app.route('/')
 def index():
-    data = getDataWithTags()
-    new = []
-    trending = []
-    bestselling = []
-    for book in data:
-        if 'new' in book[TAGS]:
-            new += [clean(book)]
-        if 'trending' in book[TAGS]:
-            trending += [clean(book)]
-        if 'bestseller' in book[TAGS]:
-            bestselling += [clean(book)]
-    return render_template("index.html", header=THEAD, new=new, trending=trending, bestselling=bestselling)
+    # Need to display some crap here
+    return render_template("index.html", content="home")
 
 if __name__=="__main__":
     Bootstrap(app)
