@@ -3,6 +3,7 @@
 {% block content %}
 {{super()}}
 
+
 <div class = "container">
 	<h1>Please fill out this form to complete your purchase</h1>
 
@@ -12,42 +13,40 @@
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="email">Email :</label>
 			<div class="col-sm-10">
-				<input type="email" class="form-control" id="email" placeholder="Enter email">
+				<input type="email" class="form-control" id="email" placeholder="Enter email" required>
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="control-label col-sm-2" for="email">First Name :</label>
+			<label class="control-label col-sm-2" for="firstName">First Name :</label>
 			<div class="col-sm-4">
-				<input type="text" class="form-control" placeholder="Enter First Name">
+				<input type="text" class="form-control" id="firstName" placeholder="Enter First Name" required>
 			</div>
-			<label class="control-label col-sm-2" for="email">Last Name :</label>
+			<label class="control-label col-sm-2" for="lastName">Last Name :</label>
 			<div class="col-sm-4">
-				<input type="email" class="form-control" id="email" placeholder="Enter Last Name">
+				<input type="text" class="form-control" id="lastName" placeholder="Enter Last Name" required>
 			</div>
 		</div>
-	</form>
 	<h3>Shipping Address</h3>
-	<form class="form-horizontal" role="form">
 		<div class="form-group">
-			<label class="control-label col-sm-2" for="email">Address Line 1 :</label>
+			<label class="control-label col-sm-2" for="address1">Address Line 1 :</label>
 			<div class="col-sm-10">
-				<input type="email" class="form-control" id="email" placeholder="Street Adress, P.O. box, company name,c/o">
+				<input type="text" class="form-control" id="address1" placeholder="Street Adress, P.O. box, company name,c/o" required>
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="control-label col-sm-2" for="email">Address Line 2 (optional) :</label>
+			<label class="control-label col-sm-2" for="address2">Address Line 2 (optional) :</label>
 			<div class="col-sm-10">
-				<input type="email" class="form-control" id="email" placeholder="Appartement, suite, unit, building, floor, etc.">
+				<input type="text" class="form-control" id="address2" placeholder="Appartement, suite, unit, building, floor, etc." >
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="control-label col-sm-2" for="email">City : </label>
+			<label class="control-label col-sm-2" for="city">City : </label>
 			<div class="col-sm-2">
-				<input type="text" class="form-control" placeholder="Enter City">
+				<input type="text" class="form-control" id="city" placeholder="Enter City" required>
 			</div>
-			<label class="control-label col-sm-2" for="email">Province :</label>
+			<label class="control-label col-sm-2" for="province">Province :</label>
 			<div class="col-sm-2">
-				<select class="form-control" required>
+				<select class="form-control" id="province"required>
 					<option value="">--</option>
 					<option value="AB">Alberta</option>
 					<option value="BC">British Columbia</option>
@@ -64,52 +63,52 @@
 					<option value="YT">Yukon</option>
 				</select>	
 			</div>
-			<label class="control-label col-sm-2" for="email">Postal Code :</label>
+			<label class="control-label col-sm-2" for="postalCode">Postal Code :</label>
 			<div class="col-sm-2">
-				<input type="text" class="form-control" placeholder="Enter Postal Code">
+				<input type="text" class="form-control" id="postalCode" placeholder="Enter Postal Code" required pattern= "[A-Za-z][0-9][A-Za-z] [0-9][A-Za-z][0-9]" title="Ex : A0A 0A0">
 			</div>
-		</div>
-	</form>
+			</div>
+			<div class="form-group">
+			<label class="control-label col-sm-2" for="phoneNumber">Phone Number :</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="phoneNumber" placeholder="Enter Phone Number" required  pattern= "[0-9]{10}" title="Ex : 6131110000">
+			</div>
+			</div>
+	
 	<h3>Shipping Options</h3>
-	<div class="col-sm-1">	</div>
-		<label class="radio-inline"><input type="radio" name="optradio">Free Shipping (~3 weeks)</label>
-		<label class="radio-inline"><input type="radio" name="optradio">Standard Shipping (+5$ / ~1weeks)</label>
-		<label class="radio-inline"><input type="radio" name="optradio">Express Shipping (+10$ / ~2days)</label>
+	<div class="col-sm-1" > 	</div>
+		<label class="radio-inline"><input type="radio" name="shippingOpt" required>Free Shipping (~3 weeks)</label>
+		<label class="radio-inline"><input type="radio" name="shippingOpt">Standard Shipping (+5$ / ~1weeks)</label>
+		<label class="radio-inline"><input type="radio" name="shippingOpt">Express Shipping (+10$ / ~2days)</label>
 	<h3>Financial Information</h3>
-	<form class="form-horizontal" role="form">
 			<div class="form-group">
 
-		<label class="control-label col-sm-2" for="email">Card Type :</label>
-		<div class="col-sm-3">
-			<label class="radio-inline"><input type="radio" name="optradio">Visa</label>
-			<label class="radio-inline"><input type="radio" name="optradio">Mastercard</label>
-			<label class="radio-inline"><input type="radio" name="optradio">AmEx</label>
-		</div>
+		<label class="control-label col-sm-2" for="cardType">Card Type :</label>
+			<label class="radio-inline"><input type="radio" name="cardType" required>Visa</label>
+			<label class="radio-inline"><input type="radio" name="cardType" required>Mastercard</label>
 		</div>
 		<div class="form-group">
-			<label class="control-label col-sm-2" for="email">Name (as it appears on your card) :</label>
+			<label class="control-label col-sm-2" for="cardName">Name (as it appears on your card) :</label>
 			<div class="col-sm-4">
-				<input type="text" class="form-control" placeholder="Enter Name">
+				<input type="text" class="form-control" id+"cardName" placeholder="Enter Name" required>
 			</div>
-			<label class="control-label col-sm-2" for="email">Card Number (no dash or spaces)</label>
+			<label class="control-label col-sm-2" for="cardNumber">Card Number (no dash or spaces)</label>
 			<div class="col-sm-4">
-				<input type="email" class="form-control" id="email" placeholder="Enter Card Number">
+				<input type="text" class="form-control" id="cardNumber" placeholder="Enter Card Number" required pattern="[0-9]{13,16}" title="13 to 16 digits">
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="control-label col-sm-2" for="email">Security Code </label>
+			<label class="control-label col-sm-2" for="securityCode">Security Code </label>
 			<div class="col-sm-2">
-				<input type="text" class="form-control" placeholder="Enter Name">
+				<input type="text" class="form-control" id="securityCode" placeholder="Enter Security Code" required pattern="[0-9][0-9][0-9]" pattern="3 digits (see back of your card)">
 			</div>
-			<label class="control-label col-sm-2" for="email">Expiration Date</label>
+			<label class="control-label col-sm-2" for="expirationDate">Expiration Date</label>
 			<div class="col-sm-2">
-				<input type="month" class="form-control" placeholder="Enter month">
+				<input type="month" class="form-control" id="expirationDate" placeholder="Enter month" required>
 			</div>
 		</div>
-
-	</form>
-	<br>
-	<button class="button-control">Submit</button>
+    <button type="Submit" class="btn btn-danger pull-right">Submit</button>
+    </form>
 
 </div>
 
