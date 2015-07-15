@@ -3,23 +3,27 @@
 {% block content %}
 {{super()}}
 <div class="container">
-    {% if 'query' in result %}
-    <h1>Here are your search results for {{result['query']}}</h1>
-    {% endif %}
-    <table class="table table-striped">
-    <tr>
-    {% for entry in result['header'] %}
-            <th> {{ entry }} </th>
-    {% endfor %}
-    </tr>
-    {% for row in result['data'] %}
+    {% if not result['data'] %}
+        <h1>There are no results for {{result['query']}}</h1>
+    {% else %}
+        {% if 'query' in result %}
+        <h1>Here are your search results for {{result['query']}}</h1>
+        {% endif %}
+        <table class="table table-striped">
         <tr>
-        {% for field in row %}
-            <td> {{ field }} </th>
+        {% for entry in result['header'] %}
+                <th> {{ entry }} </th>
         {% endfor %}
         </tr>
-    {% endfor %}
-    </table>
+        {% for row in result['data'] %}
+            <tr>
+            {% for field in row %}
+                <td> {{ field }} </th>
+            {% endfor %}
+            </tr>
+        {% endfor %}
+        </table>
+    {% endif %}
 </div>
 {% endblock %}
 
