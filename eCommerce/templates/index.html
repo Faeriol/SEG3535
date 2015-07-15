@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container bodystart">
+{{super()}}
+<div class="container">
   {{util.flashed_messages()}}
   <h1>Hey! Look at those new book!</h1>
   <table class="table table-striped">
@@ -12,9 +13,15 @@
     </tr>
     {% for row in new %}
         <tr>
-        {% for field in row %}
-            <td> {{ field }} </th>
-        {% endfor %}
+
+       
+            <td><a href="/book/{{row[4]}}">{{row[0]}}</a> </th>
+            <td> {{ row[1] }} </th>
+            <td> {{ row[2] }} </th>
+            <td> {{ row[3] }} </th>
+            <td> {{ row[4] }} </th>
+            <td> {{ row[5] }} </th>
+      
         </tr>
     {% endfor %}
     </table>
@@ -27,9 +34,13 @@
     </tr>
     {% for row in trending %}
         <tr>
-        {% for field in row %}
-            <td> {{ field }} </th>
-        {% endfor %}
+        <td><a href="/book/{{row[4]}}">{{row[0]}}</a> </th>
+        <td> {{ row[1] }} </th>
+        <td> {{ row[2] }} </th>
+        <td> {{ row[3] }} </th>
+        <td> {{ row[4] }} </th>
+        <td> {{ row[5] }} </th>
+        <tr>
         </tr>
     {% endfor %}
     </table>
@@ -43,9 +54,12 @@
     </tr>
     {% for row in bestselling %}
         <tr>
-        {% for field in row %}
-            <td> {{ field }} </th>
-        {% endfor %}
+            <td><a href="/book/{{row[4]}}">{{row[0]}}</a> </th>
+            <td> {{ row[1] }} </th>
+            <td> {{ row[2] }} </th>
+            <td> {{ row[3] }} </th>
+            <td> {{ row[4] }} </th>
+            <td> {{ row[5] }} </th>
         </tr>
     {% endfor %}
     </table>
