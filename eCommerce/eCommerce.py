@@ -15,7 +15,7 @@ import csv
 HEADER = ["Title", "Author", "Category", "Description", "ISBN", "Price", "tags" ]
 TAGS = 6
 ISBN = 4
-THEAD = HEADER[0:ISBN] +[HEADER[ISBN+1]] # skip tags when displaying
+THEAD = HEADER[0:TAGS]# +[HEADER[ISBN+1]] # skip tags when displaying
 CATEGORY = 2
 CATEGORIES = ["Science", "Technology", "Fantasy", "Psychology"]
 
@@ -39,7 +39,7 @@ def getData():
     with open('data.csv') as data:
         reader = csv.reader(data, delimiter='|', quotechar='"', quoting=csv.QUOTE_ALL)
         for row in reader:
-            result += [dropISBN(dropTags(row))]
+            result += [dropTags(row)]
     return result
 
 def getDataWithTags():
@@ -122,7 +122,7 @@ def category(cat):
     return render_template("category.html", result={"cat":cat, "header":THEAD, "data":books})
 
 def clean(row):
-    return dropISBN(dropTags(row))
+    return dropTags(row)
 
 @app.route('/')
 def index():
