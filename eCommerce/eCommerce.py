@@ -84,7 +84,7 @@ def book(id):
         if id == book[ISBN]:
             result = book
             break
-    return render_template('book.html', form=result)
+    return render_template('book.html', result=result)
 
 @app.route('/search/', methods=["GET"])
 def search():
@@ -137,7 +137,7 @@ def index():
             trending += [clean(book)]
         if 'bestseller' in book[TAGS]:
             bestselling += [clean(book)]
-    return render_template("index.html", header=THEAD, new=new, trending=trending, bestselling=bestselling)
+    return render_template("index.html", content="home", header=THEAD, new=new, trending=trending, bestselling=bestselling)
 
 if __name__=="__main__":
     Bootstrap(app)

@@ -17,9 +17,12 @@
         </tr>
         {% for row in result['data'] %}
             <tr>
-            {% for field in row %}
-                <td> {{ field }} </th>
-            {% endfor %}
+            <td><a href="/book/{{row[4]}}">{{row[0]}}</a> </th>
+            <td> {{ row[1] }} </th>
+            <td> {{ row[2] }} </th>
+            <td> {{ row[3] }} </th>
+            <td> {{ row[4] }} </th>
+            <td> {{ row[5] }} </th>
             </tr>
         {% endfor %}
         </table>
