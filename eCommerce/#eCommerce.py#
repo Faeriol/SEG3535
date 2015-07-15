@@ -12,9 +12,7 @@ from wtforms.validators import Required
 import csv
 
 # ID Fields in CSV... Yes this is dirty
-HEADER = ["Title", "Author", "Category", "Description", "ISBN", "Price", "tags" ]
-TAGS = 6
-THEAD = HEADER[0:TAGS] # skip tags when displaying
+HEADER = ["Title", "Author", "Category", "Description", "ISBN", "Price" ]
 ISBN = 4
 CATEGORY = 2
 CATEGORIES = ["Science", "Technology", "Fantasy"]
@@ -22,46 +20,21 @@ CATEGORIES = ["Science", "Technology", "Fantasy"]
 
 app = Flask(__name__)
 
-def dropTags(row):
-    return row[0:TAGS]
-
-def extractTags(row):
-    nrow = dropTags(row)
-    nrow += [row[TAGS].split('-')]
-    print nrow
-    return nrow
-
 def getData():
     result = []
     with open('data.csv') as data:
         reader = csv.reader(data, delimiter='|', quotechar='"', quoting=csv.QUOTE_ALL)
         for row in reader:
-            result += [dropTags(row)]
+            result += [row]
     return result
 
-def getDataWithTags():
-    result = []
-    with open('data.csv') as data:
-        reader = csv.reader(data, delimiter='|', quotechar='"', quoting=csv.QUOTE_ALL)
-        for row in reader:
-            result += [extractTags(row)]
-    return result
-    
 def notDoneYet(feature):
     return render_template('notdone.html', key=feature)
-
-@app.route('/thankyou')
-def thankyou():
-    return render_template('thankyou.html')
-
-@app.route('/confirm')
-def confirm():
-    return render_template('confirm.html')
 
 # Future features
 @app.route('/checkout')
 def checkout():
-    return render_template('checkout.html')
+    return notDoneYet("Checkout")
 
 @app.route('/delete')
 def delete():
@@ -72,7 +45,7 @@ def delete():
 def cart():
     "Lets build a fake basket"
     cart = getData()
-    return render_template('cart.html', content="cart", result={"header":THEAD,"data":cart})
+    return render_template('cart.html', content="cart", result={"header":HEADER,"data":cart})
 
 @app.route('/book/<id>') # Where ID's are actually ISBN
 def book(id):
@@ -87,7 +60,6 @@ def book(id):
 def search():
     print(request)
     term = request.args.get('term')
-    found = False
     books = []
     if term == None:
         flash('Please use the search field to find content.', 'error')
@@ -99,29 +71,23 @@ def search():
         for field in book:
             if term in field:
                 print("FOUND")
-                found=True;
                 books += [book]
                 break
-    if(found):
-        return render_template("search.html", result={"query":"'" +term +"'","header":HEADER,"data":books})
-    else:
-        return render_template("search.html", result={"query":"'" +term +"'", "data":[]})
-
+    return render_template("search.html", result={"query":"'" +term +"'","header":HEADER,"data":books})
 
 @app.route('/category/<cat>')
 def category(cat):
-    books = []
-    cat=cat.title()
+    result = []
     for book in getData():
-        if cat == book[CATEGORY]:
-            books += [book]
+        if id == book[ISBN]:
+            result = book
+            break
     # we has got partial feature... Put in some books
-    return render_template("category.html", result={"cat":cat, "header":HEADER, "data":books})
+    return render_template("category.html")
 
 @app.route('/')
 def index():
-    # Need to display some crap here
-    return render_template("index.html", content="home")
+    # Need to display some crap    return render_template("index.html", content="home")
 
 if __name__=="__main__":
     Bootstrap(app)
