@@ -3,8 +3,52 @@
 {% block content %}
 <div class="container bodystart">
   {{util.flashed_messages()}}
-  <h1>Hey Guys, I need some love too!</h1>
+  <h1>Hey! Look at those new book!</h1>
+  <table class="table table-striped">
+    <tr>
+    {% for entry in header %}
+            <th> {{ entry }} </th>
+    {% endfor %}
+    </tr>
+    {% for row in new %}
+        <tr>
+        {% for field in row %}
+            <td> {{ field }} </th>
+        {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
+    <h1>Trending</h1>
+      <table class="table table-striped">
+    <tr>
+    {% for entry in header %}
+            <th> {{ entry }} </th>
+    {% endfor %}
+    </tr>
+    {% for row in trending %}
+        <tr>
+        {% for field in row %}
+            <td> {{ field }} </th>
+        {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
 
+    <h1>Bestselling... Like get those man...</h1>
+      <table class="table table-striped">
+    <tr>
+    {% for entry in header %}
+            <th> {{ entry }} </th>
+    {% endfor %}
+    </tr>
+    {% for row in bestselling %}
+        <tr>
+        {% for field in row %}
+            <td> {{ field }} </th>
+        {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
 </div>
 {% endblock %}
 
