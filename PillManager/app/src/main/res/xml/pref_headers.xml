@@ -3,15 +3,15 @@
     <!-- These settings headers are only used on tablets. -->
 
     <header
-        android:fragment="ca.uottawa.site.seg23525.projet.pillmanager.UI.SettingsActivity$GeneralPreferenceFragment"
+        android:fragment="ca.uottawa.site.seg23525.projet.drmario.UI.SettingsActivity$GeneralPreferenceFragment"
         android:title="@string/pref_header_general" />
 
     <header
-        android:fragment="ca.uottawa.site.seg23525.projet.pillmanager.UI.SettingsActivity$NotificationPreferenceFragment"
+        android:fragment="ca.uottawa.site.seg23525.projet.drmario.UI.SettingsActivity$NotificationPreferenceFragment"
         android:title="@string/pref_header_notifications" />
 
     <header
-        android:fragment="ca.uottawa.site.seg23525.projet.pillmanager.UI.SettingsActivity$DataSyncPreferenceFragment"
+        android:fragment="ca.uottawa.site.seg23525.projet.drmario.UI.SettingsActivity$DataSyncPreferenceFragment"
         android:title="@string/pref_header_data_sync" />
 
 </preference-headers>
