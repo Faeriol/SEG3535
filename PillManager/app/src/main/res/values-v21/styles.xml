@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--BTW: https://www.materialpalette.com/blue/red -->
 <resources>
     <style name="AppTheme" parent="android:ThemeOverlay.Material.Light">
         <item name="android:colorPrimary">@color/primary</item>
