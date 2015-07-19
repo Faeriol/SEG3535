@@ -10,8 +10,9 @@ public class SQLiteBrand extends Brand implements SQLitePersistable{
 
     private int id;
 
-    public SQLiteBrand(String name){
+    public SQLiteBrand(int id, String name){
         super(name);
+        this.id = id;
     }
 
     @Override

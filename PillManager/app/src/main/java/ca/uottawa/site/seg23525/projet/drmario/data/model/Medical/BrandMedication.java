@@ -7,6 +7,8 @@ public abstract class BrandMedication extends Medication {
     private Brand brand;
     private byte[] picture;
 
+    public BrandMedication(){}
+
     public BrandMedication(Medication medication, Brand brand){
         super(medication);
         this.brand = brand;
@@ -15,6 +17,7 @@ public abstract class BrandMedication extends Medication {
     public Brand getBrand(){
         return brand;
     }
+    public void setBrand(Brand brand){this.brand = brand;}
 
     public byte[] getPicture(){
         return picture;

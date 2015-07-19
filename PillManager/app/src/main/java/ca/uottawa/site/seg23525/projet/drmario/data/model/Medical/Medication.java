@@ -13,6 +13,7 @@ public abstract class Medication {
     private String name;
     private String commonName;
 
+    public Medication(){};
     public Medication(Medication medication){
         this.interactions = medication.interactions;
         this.threats = medication.threats;
@@ -22,5 +23,21 @@ public abstract class Medication {
 
     public String getName(){
         return name;
+    }
+
+    public void setInteractions(Set<Medication> interactions){
+        this.interactions = interactions;
+    }
+
+    public void setThreats(Set<Ailment> threats){
+        this.threats = threats;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setCommonName(String name){
+        this.commonName = name;
     }
 }
