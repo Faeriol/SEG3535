@@ -51,12 +51,19 @@ public class NavDrawerListAdapter extends BaseAdapter {
             convertView = mInflater.inflate(R.layout.drawer_list_item, null);
         }
 
-        ImageView imgIcon = (ImageView) convertView.findViewById(R.id.icon);
-        TextView txtTitle = (TextView) convertView.findViewById(R.id.title);
-        //TextView txtCount = (TextView) convertView.findViewById(R.id.counter);
+        if (navDrawerItems.get(position).getTitle().equals("Section")) {
+            LayoutInflater mInflater = (LayoutInflater)
+                    context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+            convertView = mInflater.inflate(R.layout.drawer_section, null);
+            return convertView;
+        }else {
 
-        imgIcon.setImageResource(navDrawerItems.get(position).getIcon());
-        txtTitle.setText(navDrawerItems.get(position).getTitle());
+            TextView txtTitle = (TextView) convertView.findViewById(R.id.title);
+            ImageView imgIcon = (ImageView) convertView.findViewById(R.id.icon);
+            //TextView txtCount = (TextView) convertView.findViewById(R.id.counter);
+
+            imgIcon.setImageResource(navDrawerItems.get(position).getIcon());
+            txtTitle.setText(navDrawerItems.get(position).getTitle());
 
         /*
         // displaying count
@@ -69,6 +76,7 @@ public class NavDrawerListAdapter extends BaseAdapter {
         }
         */
 
+        }
         return convertView;
     }
 

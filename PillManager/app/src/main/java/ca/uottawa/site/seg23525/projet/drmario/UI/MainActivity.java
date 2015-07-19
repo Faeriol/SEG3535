@@ -3,6 +3,7 @@ package ca.uottawa.site.seg23525.projet.drmario.UI;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -64,16 +65,23 @@ public class MainActivity extends Activity {
         // adding nav drawer items to array
         // Home
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
-        // Find People
+        // Med list
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
-        // Photos
+        // Interactions
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
-        // Communities, Will add a counter here
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1), true, "22"));
-        // Pages
+        // Med history
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
+        // Changes History
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
-        // What's hot, We  will add a counter here
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1), true, "50+"));
+        // Wiki
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
+
+        navDrawerItems.add(new NavDrawerItem("Section", 0));
+        //settings
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(6, -1)));
+        //help
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[7], navMenuIcons.getResourceId(7, -1)));
+
 
 
         // Recycle the typed array
@@ -83,6 +91,7 @@ public class MainActivity extends Activity {
         adapter = new NavDrawerListAdapter(getApplicationContext(),
                 navDrawerItems);
         mDrawerList.setAdapter(adapter);
+        mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
 
         // enabling action bar app icon and behaving it as toggle button
         getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -194,24 +203,28 @@ public class MainActivity extends Activity {
             case 0:
                 fragment = new HomeFragment();
                 break;
-            /*
             case 1:
-                fragment = new MedicationListFragment();
+                fragment = new DrugManageFragment();
                 break;
             case 2:
-                fragment = new InteractionFragment();
+                fragment = new InteractionsFragment();
                 break;
             case 3:
-                fragment = new MedicamentHistoryFragment();
+                fragment = new IntakeHistoryFragment();
                 break;
             case 4:
-                fragment = new ChangesHistoryFragment();
+                fragment = new PrescriptionHistoryFragment();
                 break;
             case 5:
                 fragment = new WikiFragment();
                 break;
-                */
-
+            case 7:
+                Intent myIntent = new Intent(this, SettingsActivity.class);
+                startActivity(myIntent);
+                break;
+            case 8:
+                fragment = new HelpFragment();
+                break;
             default:
                 break;
         }
@@ -222,8 +235,12 @@ public class MainActivity extends Activity {
                     .replace(R.id.frame_container, fragment).commit();
 
             // update selected item and title, then close the drawer
+
             mDrawerList.setItemChecked(position, true);
             mDrawerList.setSelection(position);
+            if(position>6){ //Because of the section ...
+                position--;
+            }
             setTitle(navMenuTitles[position]);
             mDrawerLayout.closeDrawer(mDrawerList);
         } else {

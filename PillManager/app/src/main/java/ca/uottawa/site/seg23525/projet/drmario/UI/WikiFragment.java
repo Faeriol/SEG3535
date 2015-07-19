@@ -1,10 +1,14 @@
 package ca.uottawa.site.seg23525.projet.drmario.UI;
 
-import android.app.Activity;
+import android.app.Fragment;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.SearchView;
 
@@ -17,13 +21,13 @@ import ca.uottawa.site.seg23525.projet.drmario.data.persist.Wiki.PrescriptionWik
  * An activity to Handle wiki information and searches
  * @author faeriol
  */
-public class WikiActivity extends Activity implements SearchView.OnQueryTextListener {
+public class WikiFragment extends Fragment implements SearchView.OnQueryTextListener {
 
     private PrescriptionDrugWiki wiki;
     private SearchView searchView;
     private WebView wikiView;
 
-    public WikiActivity(){
+    public WikiFragment(){
         super();
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -32,34 +36,24 @@ public class WikiActivity extends Activity implements SearchView.OnQueryTextList
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         if(null==wiki){
             wiki = new PrescriptionWikiAsAService();
         }
-        setContentView(R.layout.activity_wiki);
-        wikiView = (WebView)findViewById(R.id.wikiView);
-        /*wikiView.setWebViewClient(new WebViewClient(){
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                if (url != null && url.startsWith("http://")) {
-                    view.getContext().startActivity(
-                            new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        });*/
+        View rootView = inflater.inflate(R.layout.fragment_wiki, container, false);
+        wikiView = (WebView)container.findViewById(R.id.wikiView);
+
+        return rootView;
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_wiki, menu);
+        inflater.inflate(R.menu.menu_wiki, menu);
         MenuItem searchItem = menu.findItem(R.id.action_search);
         searchView = (SearchView) searchItem.getActionView();
         searchView.setOnQueryTextListener(this);
-        return true;
     }
 
     @Override
