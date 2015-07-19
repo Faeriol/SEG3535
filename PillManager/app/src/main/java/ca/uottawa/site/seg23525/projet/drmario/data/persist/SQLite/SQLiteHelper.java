@@ -70,10 +70,32 @@ public class SQLiteHelper extends SQLiteOpenHelper{
                 "taken BOOLEAN NOT NULL DEFAULT false," +
                 "delay INTEGER NOT NULL DEFAULT 0);");
 
+        // Inject some data
+        db.execSQL("INSERT INTO Brand (name) VALUES ('Company1');");
+        db.execSQL("INSERT INTO Brand (name) VALUES ('Company2');");
+        db.execSQL("INSERT INTO Brand (name) VALUES ('Company3');");
+        db.execSQL("INSERT INTO Brand (name) VALUES ('Company4');");
+        db.execSQL("INSERT INTO Brand (name) VALUES ('Company5');");
+        db.execSQL("INSERT INTO Medication (name, common_name) VALUES ('Cetirizine', 'Reactine');");
+        db.execSQL("INSERT INTO Medication (name, common_name) VALUES ('Acetaminophen', 'Tylenol');");
+        db.execSQL("INSERT INTO Medication (name, common_name) VALUES ('Ibuprofen', 'Advil');");
+        db.execSQL("INSERT INTO Medication (name, common_name) VALUES ('Some other drug', 'Some common name');");
+        db.execSQL("INSERT INTO Medication (name, common_name) VALUES ('Scientific looking name... Not', 'B');");
+        db.execSQL("INSERT INTO Brand_Medication (med_id, brand_id) VALUES (1, 1);");
+        db.execSQL("INSERT INTO Brand_Medication (med_id, brand_id) VALUES (1, 2);");
+        db.execSQL("INSERT INTO Brand_Medication (med_id, brand_id) VALUES (1, 3);");
+        db.execSQL("INSERT INTO Brand_Medication (med_id, brand_id) VALUES (1, 4);");
+        db.execSQL("INSERT INTO Brand_Medication (med_id, brand_id) VALUES (2, 2);");
+        db.execSQL("INSERT INTO Brand_Medication (med_id, brand_id) VALUES (2, 3);");
+        db.execSQL("INSERT INTO Brand_Medication (med_id, brand_id) VALUES (4, 5);");
+        db.execSQL("INSERT INTO Prescribed_Medication (brand_med_id, dosage) VALUES (1, 20);");
+        db.execSQL("INSERT INTO Prescribed_Medication (brand_med_id, dosage) VALUES (2, 1000);");
+        db.execSQL("INSERT INTO Prescribed_Medication (brand_med_id, dosage) VALUES (4, 25);");
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+            
     }
 }

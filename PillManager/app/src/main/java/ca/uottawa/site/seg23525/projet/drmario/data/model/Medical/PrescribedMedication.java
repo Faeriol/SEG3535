@@ -8,7 +8,7 @@ import android.provider.CalendarContract;
  */
 public abstract class PrescribedMedication {
     private BrandMedication medication;
-    private float dosage;
+    private float dosage; // Always in milligrams... DEMO
     private CalendarContract.Events schedule;
 
     public PrescribedMedication(BrandMedication medication, float dosage){
@@ -19,6 +19,12 @@ public abstract class PrescribedMedication {
     public BrandMedication getMedication(){
         return medication;
     }
+
+    /**
+     * Returns the dosage, in milligrams
+     * @return
+     */
+    public float getDosage() {return dosage;}
 
     /**
      * Sets a new @link{BrandMedication} in this PrescribedMedication
