@@ -16,8 +16,17 @@ public class SQliteBrandMedication extends BrandMedication implements SQLitePers
         super(medication, brand);
     }
 
+    public SQliteBrandMedication(int id, Medication medication, Brand brand){
+        this(medication, brand);
+        this.id = id;
+    }
+
+    public SQliteBrandMedication(){};
+
     @Override
     public int getID() {
         return id;
     }
+
+    public void setID(int id){ this.id = id;}
 }
