@@ -43,7 +43,9 @@ public class WikiFragment extends Fragment implements SearchView.OnQueryTextList
             wiki = new PrescriptionWikiAsAService();
         }
         View rootView = inflater.inflate(R.layout.fragment_wiki, container, false);
-        wikiView = (WebView)container.findViewById(R.id.wikiView);
+        //wikiView = (WebView)container.findViewById(R.id.wikiView);
+        wikiView = (WebView) rootView.findViewById(R.id.wikiView);
+        System.out.println(wikiView);
 
         return rootView;
     }
