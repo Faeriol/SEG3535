@@ -38,6 +38,7 @@ public class WikiFragment extends Fragment implements SearchView.OnQueryTextList
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
         if(null==wiki){
             wiki = new PrescriptionWikiAsAService();
         }
