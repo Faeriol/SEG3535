@@ -11,8 +11,9 @@ public class SQLitePrescribedMedication extends PrescribedMedication implements 
 
     private int id;
 
-    public SQLitePrescribedMedication(BrandMedication medication, float dosage){
+    public SQLitePrescribedMedication(int id, BrandMedication medication, float dosage){
         super(medication, dosage);
+        this.id = id;
     }
 
     @Override

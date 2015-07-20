@@ -50,6 +50,10 @@ def getMedHTML(med):
 def wiki(medname):
     return getMedHTML(medname)
 
+@app.route('/medwiki/<medname>')
+def medwiki(medname):
+    return getMedHTML(medname)
+
 if __name__=="__main__":
     app.debug = True
-    app.run()
+    app.run(host='0.0.0.0',port=8008)
