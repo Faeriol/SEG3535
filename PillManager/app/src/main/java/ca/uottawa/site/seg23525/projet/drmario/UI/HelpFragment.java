@@ -38,7 +38,7 @@ public class HelpFragment extends Fragment implements SearchView.OnQueryTextList
         if(null==help){
             help = new HelpAsAService();
         }
-        View rootView = inflater.inflate(R.layout.fragment_wiki, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_help, container, false);
         //wikiView = (WebView)container.findViewById(R.id.wikiView);
         helpView = (WebView) rootView.findViewById(R.id.helpView);
         System.out.println(helpView);
@@ -74,7 +74,7 @@ public class HelpFragment extends Fragment implements SearchView.OnQueryTextList
     public boolean onQueryTextSubmit(String query) {
         System.out.println(query);
         //System.out.println(wiki.getDrugByName(query));
-        helpView.loadUrl(help.getSubjectUrlByName(query));
+        helpView.loadUrl(help.getSubjectUrlByName(query.replaceAll("\\s", "")));
         return false;
     }
 
