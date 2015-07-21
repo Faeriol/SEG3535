@@ -3,7 +3,7 @@
 import httplib2
 from bs4 import BeautifulSoup
 import sys
-from flask import Flask
+from flask import Flask, render_template, flash
 app = Flask(__name__)
 
 #BASE_URL = "http://medlibrary.org/lib/rx/meds/"
@@ -53,6 +53,11 @@ def wiki(medname):
 @app.route('/medwiki/<medname>')
 def medwiki(medname):
     return getMedHTML(medname)
+
+@app.route('/help/<subject>')
+def help(subject):
+    subject = subject.lower() +".html"
+    return render_template(subject)
 
 if __name__=="__main__":
     app.debug = True
