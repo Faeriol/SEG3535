@@ -1,15 +1,13 @@
 package ca.uottawa.site.seg23525.projet.drmario.UI;
 
-        import android.app.Fragment;
-        import android.os.Bundle;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-
-        import ca.uottawa.site.seg23525.projet.drmario.R;
+    import android.os.Bundle;
+    import android.view.LayoutInflater;
+    import android.view.View;
+    import android.view.ViewGroup;
+    import ca.uottawa.site.seg23525.projet.drmario.R;
 
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends DAOFragment {
 
 
     public HomeFragment(){}
@@ -22,5 +20,6 @@ public class HomeFragment extends Fragment {
 
         return rootView;
     }
+
 }
 

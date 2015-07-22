@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import ca.uottawa.site.seg23525.projet.drmario.R;
 import ca.uottawa.site.seg23525.projet.drmario.UI.adapter.NavDrawerListAdapter;
 import ca.uottawa.site.seg23525.projet.drmario.UI.model.NavDrawerItem;
+import ca.uottawa.site.seg23525.projet.drmario.data.persist.SQLite.DAO;
 
 
 public class MainActivity extends Activity {
@@ -42,11 +43,17 @@ public class MainActivity extends Activity {
     private ArrayList<NavDrawerItem> navDrawerItems;
     private NavDrawerListAdapter adapter;
 
+    //DAO
+    private DAO dao;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        dao = new DAO(this.getApplicationContext());
+
 
         mTitle = mDrawerTitle = getTitle();
 
@@ -230,6 +237,9 @@ public class MainActivity extends Activity {
         }
 
         if (fragment != null) {
+            if(fragment instanceof DAOFragment){
+                ((DAOFragment)fragment).setDAO(dao);
+            }
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction()
                     .replace(R.id.frame_container, fragment).commit();
