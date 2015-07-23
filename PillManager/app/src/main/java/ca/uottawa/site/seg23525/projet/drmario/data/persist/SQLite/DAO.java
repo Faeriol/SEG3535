@@ -23,7 +23,7 @@ import ca.uottawa.site.seg23525.projet.drmario.data.model.Medical.SQLite.SQliteB
 public class DAO {
     private SQLiteDatabase db;
     private SQLiteHelper helper;
-    private String[] medicationColumns = {"_id", "name", "commonName"};
+    private String[] medicationColumns = {"_id", "name", "common_name"};
     private String[] brandMedicationColumns = {"_id", "med_id", "brand_id"};
     private String[] brandColumns = {"_id", "name"};
     private String[] prescribedMedicationColumns = {"_id", "brand_med_id", "dosage"};
