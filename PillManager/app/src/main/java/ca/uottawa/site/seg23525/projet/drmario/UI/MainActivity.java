@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 import ca.uottawa.site.seg23525.projet.drmario.R;
 import ca.uottawa.site.seg23525.projet.drmario.UI.adapter.NavDrawerListAdapter;
+import ca.uottawa.site.seg23525.projet.drmario.UI.helper.DAOFragment;
 import ca.uottawa.site.seg23525.projet.drmario.UI.model.NavDrawerItem;
 import ca.uottawa.site.seg23525.projet.drmario.data.persist.SQLite.DAO;
 
@@ -53,6 +54,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         dao = new DAO(this.getApplicationContext());
+        dao.open();
 
 
         mTitle = mDrawerTitle = getTitle();
