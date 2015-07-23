@@ -14,6 +14,8 @@
         android:layout_height="100px"
         card_view:cardCornerRadius="4dp"
         android:layout_margin="10px">
+
+
             <TextView android:text="Welcome, here are the medications you need to take today"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
