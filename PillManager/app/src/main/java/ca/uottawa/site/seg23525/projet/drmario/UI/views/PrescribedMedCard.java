@@ -43,7 +43,7 @@ public class PrescribedMedCard extends CardView{
         baseId += 100;
         this.setId(id);
 
-        ViewGroup.MarginLayoutParams params = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 400);
+        ViewGroup.MarginLayoutParams params = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 200);
         params.setMargins(bm, bm, bm, bm);
         setLayoutParams(new LinearLayout.LayoutParams(params));
 
@@ -123,7 +123,7 @@ public class PrescribedMedCard extends CardView{
 
     private void createButtons(){
         cancelButton = new Button(this.getContext());
-        cancelButton.setText("Cancel");
+        cancelButton.setText("Dismiss");
         cancelButton.setId(id++);
         RelativeLayout.LayoutParams cancelLay = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         cancelLay.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
@@ -151,5 +151,9 @@ public class PrescribedMedCard extends CardView{
 
     public Button getPostponeButton(){
         return postponeButton;
+    }
+
+    public PrescribedMedication getMedication() {
+        return m;
     }
 }
