@@ -81,16 +81,16 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         db.execSQL("INSERT INTO Medication (name, common_name) VALUES ('Ibuprofen', 'Advil');");
         db.execSQL("INSERT INTO Medication (name, common_name) VALUES ('Some other drug', 'Some common name');");
         db.execSQL("INSERT INTO Medication (name, common_name) VALUES ('Scientific looking name... Not', 'B');");
-        db.execSQL("INSERT INTO Brand_Medication (med_id, brand_id) VALUES (1, 1);");
+        db.execSQL("INSERT INTO Brand_Medication (med_id, brand_id) VALUES (1, 1);"); //1
         db.execSQL("INSERT INTO Brand_Medication (med_id, brand_id) VALUES (1, 2);");
-        db.execSQL("INSERT INTO Brand_Medication (med_id, brand_id) VALUES (1, 3);");
+        db.execSQL("INSERT INTO Brand_Medication (med_id, brand_id) VALUES (1, 3);"); //3
         db.execSQL("INSERT INTO Brand_Medication (med_id, brand_id) VALUES (1, 4);");
-        db.execSQL("INSERT INTO Brand_Medication (med_id, brand_id) VALUES (2, 2);");
+        db.execSQL("INSERT INTO Brand_Medication (med_id, brand_id) VALUES (2, 2);"); //5
         db.execSQL("INSERT INTO Brand_Medication (med_id, brand_id) VALUES (2, 3);");
-        db.execSQL("INSERT INTO Brand_Medication (med_id, brand_id) VALUES (4, 5);");
+        db.execSQL("INSERT INTO Brand_Medication (med_id, brand_id) VALUES (4, 5);"); //7
         db.execSQL("INSERT INTO Prescribed_Medication (brand_med_id, dosage) VALUES (1, 20);");
-        db.execSQL("INSERT INTO Prescribed_Medication (brand_med_id, dosage) VALUES (2, 1000);");
-        db.execSQL("INSERT INTO Prescribed_Medication (brand_med_id, dosage) VALUES (4, 25);");
+        db.execSQL("INSERT INTO Prescribed_Medication (brand_med_id, dosage) VALUES (5, 1000);");
+        db.execSQL("INSERT INTO Prescribed_Medication (brand_med_id, dosage) VALUES (7, 25);");
 
     }
 
