@@ -12,4 +12,11 @@ public abstract class DAOFragment extends Fragment {
     public void setDAO(DAO dao){
         this.dao = dao;
     }
+
+    public void checkDAO(){
+        if (dao == null) {
+            dao = new DAO(getActivity().getApplicationContext());
+            dao.open();
+        }
+    }
 }
