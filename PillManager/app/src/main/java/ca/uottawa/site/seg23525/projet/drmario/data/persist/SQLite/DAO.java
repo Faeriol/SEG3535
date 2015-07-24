@@ -66,6 +66,8 @@ public class DAO {
     private Medication cursorToMedication(Cursor cursor) {
         SQliteBrandMedication med = new SQliteBrandMedication();
         med.setID(cursor.getInt(0));
+        med.setName(cursor.getString(1));
+        med.setCommonName(cursor.getString(2));
         // Do stuffs about le Medicament! SHIT
         //brandMed.omment(cursor.getString(1));
         return med;
