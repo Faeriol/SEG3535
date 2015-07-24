@@ -25,6 +25,10 @@ public abstract class Medication {
         return name;
     }
 
+    public String getCommonName(){
+        return this.commonName;
+    }
+
     public void setInteractions(Set<Medication> interactions){
         this.interactions = interactions;
     }
