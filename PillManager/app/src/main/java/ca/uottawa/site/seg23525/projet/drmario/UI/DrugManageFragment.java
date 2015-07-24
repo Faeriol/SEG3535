@@ -6,10 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import ca.uottawa.site.seg23525.projet.drmario.R;
-import ca.uottawa.site.seg23525.projet.drmario.UI.helper.DAOFragment;
+import ca.uottawa.site.seg23525.projet.drmario.UI.helper.DAOListFragment;
 
 
-public class DrugManageFragment extends DAOFragment {
+public class DrugManageFragment extends DAOListFragment {
 
     public DrugManageFragment(){}
 
