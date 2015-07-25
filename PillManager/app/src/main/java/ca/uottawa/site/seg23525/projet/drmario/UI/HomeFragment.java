@@ -1,16 +1,12 @@
 package ca.uottawa.site.seg23525.projet.drmario.UI;
 
     import android.content.Context;
-    import android.graphics.Color;
     import android.os.Bundle;
-    import android.support.v7.widget.CardView;
     import android.view.LayoutInflater;
     import android.view.View;
     import android.view.ViewGroup;
-    import android.widget.Button;
     import android.widget.LinearLayout;
-    import android.widget.RelativeLayout;
-    import android.widget.TextView;
+    import android.widget.Toast;
 
     import java.util.List;
 
@@ -36,7 +32,7 @@ public class HomeFragment extends DAOFragment {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         layout = (LinearLayout) rootView;
 
-        Context context = this.layout.getContext();
+        final Context context = this.layout.getContext();
 
         List<PrescribedMedication> pMed = this.dao.getAllPrescribedMedication();
         medCards = new PrescribedMedCard[pMed.size()];
@@ -46,13 +42,19 @@ public class HomeFragment extends DAOFragment {
             medCards[i].getCancelButton().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    layout.removeView((View) v.getParent().getParent()); // Such troll
+                    PrescribedMedCard medCard = (PrescribedMedCard) v.getParent().getParent();
+                    layout.removeView(medCard); // Such troll
+                    Toast toast = Toast.makeText(context, "Dismissed " +medCard.getMedication().getMedication().getName(), Toast.LENGTH_SHORT);
+                    toast.show();
                 }
             });
             medCards[i].getPostponeButton().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    layout.removeView((View)v.getParent().getParent()); // Such troll
+                    PrescribedMedCard medCard = (PrescribedMedCard) v.getParent().getParent();
+                    layout.removeView(medCard); // Such troll
+                    Toast toast = Toast.makeText(context, "Postponed " +medCard.getMedication().getMedication().getName(), Toast.LENGTH_SHORT);
+                    toast.show();
                 }
             });
         }
