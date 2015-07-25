@@ -1,33 +1,123 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="48dp">
-    <ImageView
-        android:id="@+id/med_image"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
-        android:contentDescription="@string/desc_list_item_icon"
-        android:layout_centerVertical="true" />
-    <!--  android:src="@drawable/ic_home" -->
+    android:layout_height="match_parent"
+    android:id="@+id/lyt_container"
+    android:background="@color/list_background">
 
-    <TextView
-     android:id="@+id/med_name"
-     android:layout_width="wrap_content"
-     android:layout_height="match_parent"
-     android:layout_toRightOf="@id/icon"
-     android:minHeight="?android:attr/listPreferredItemHeightSmall"
-     android:textAppearance="?android:attr/textAppearanceListItemSmall"
-     android:textColor="@color/list_item_title"
-     android:gravity="center_vertical"
-     android:paddingRight="40dp"/>
 
- <TextView android:id="@+id/counter"
-     android:layout_width="wrap_content"
-     android:layout_height="wrap_content"
-     android:layout_alignParentRight="true"
-     android:layout_centerVertical="true"
-     android:layout_marginRight="8dp" />
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-</RelativeLayout>
+        <ImageView
+            android:id="@+id/med_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:contentDescription="@string/desc_list_item_icon"
+            android:layout_centerVertical="true" />
+
+        <LinearLayout
+            android:id="@+id/row_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:layout_toRightOf="@id/med_image">
+
+            <TextView
+                android:id="@+id/med_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                android:textColor="@color/list_item_title"
+                android:textStyle="bold"
+                />
+            <TextView android:id="@+id/dosage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                android:textColor="@color/list_item_title"
+                android:layout_marginLeft="8dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row_2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:layout_below="@id/row_1"
+            android:layout_toRightOf="@id/med_image">
+
+
+            <TextView android:id="@+id/common_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                android:textColor="@color/list_item_title"
+                android:layout_toRightOf="@id/med_image"
+                android:layout_marginRight="8dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row_3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/med_image"
+            android:layout_below="@id/row_2">
+
+            <TextView android:id="@+id/take_at"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                android:textColor="@color/list_item_title"
+                android:layout_marginRight="8dp"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:weightSum="3"
+        android:background="@android:color/holo_red_light"
+        android:paddingLeft="@dimen/list_item_padding_sides"
+        android:paddingRight="@dimen/list_item_padding_sides">
+        <!--android:height="@dimen/list_item_height"-->
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/txt_delete"
+            android:gravity="center_vertical"
+            android:text="@string/deleted"
+            android:clickable="false"
+            android:layout_weight="2"
+            android:hapticFeedbackEnabled="true"
+            android:textColor="@android:color/white"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:id="@+id/txt_undo"
+            android:text="@string/undo"
+            android:clickable="false"
+            android:layout_weight="1"
+            android:textColor="@color/yellow"/>
+
+    </LinearLayout>
+
+</FrameLayout>
+

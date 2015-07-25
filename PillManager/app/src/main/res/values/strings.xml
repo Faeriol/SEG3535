@@ -10,6 +10,11 @@
     <string name="title_activity_help">HelpActivity</string>
     <string name="action_search">Search</string>
 
+    <string name="deleted">Deleted</string>
+    <string name="undo">UNDO</string>
+
+
+
     <string name="hello_world">Hello world!</string>
     <string name="drawer_open">Slider Menu Opened</string>
     <string name="drawer_close">Slider Menu Closed</string>
