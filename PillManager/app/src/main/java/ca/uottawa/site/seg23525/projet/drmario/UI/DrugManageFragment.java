@@ -1,5 +1,6 @@
 package ca.uottawa.site.seg23525.projet.drmario.UI;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 import com.hudomju.swipe.SwipeToDismissTouchListener;
 import com.hudomju.swipe.adapter.ListViewAdapter;
+import com.melnykov.fab.FloatingActionButton;
 
 import java.util.List;
 
@@ -47,6 +49,16 @@ public class DrugManageFragment extends DAOListFragment {
         adapter = new MedicationListAdapter(getActivity(), R.layout.fragment_drug_manage, meds);
 
         medList.setAdapter(adapter);
+        FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.fab);
+        fab.attachToListView(medList);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AddMedicamentActivity.class);
+                startActivity(intent);
+            }
+        });
 
         final SwipeToDismissTouchListener<ListViewAdapter> touchListener =
                 new SwipeToDismissTouchListener<>(

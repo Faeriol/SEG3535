@@ -19,34 +19,38 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
+        <fragment
             android:name=".UI.DrugManageFragment"
             android:label="@string/title_activity_drug_manage" >
-        </activity>
-        <activity
+        </fragment>
+        <fragment
             android:name=".UI.WikiFragment"
             android:exported="true"
             android:label="@string/title_activity_wiki" >
-        </activity>
-        <activity
+        </fragment>
+        <fragment
             android:name=".UI.InteractionsFragment"
             android:label="@string/title_activity_interactions" >
-        </activity>
-        <activity
+        </fragment>
+        <fragment
             android:name=".UI.IntakeHistoryFragment"
             android:label="@string/title_activity_intake_history" >
-        </activity>
-        <activity
+        </fragment>
+        <fragment
             android:name=".UI.PrescriptionHistoryFragment"
             android:label="@string/title_activity_prescription_history" >
-        </activity>
+        </fragment>
         <activity
-            android:name="ca.uottawa.site.seg23525.projet.drmario.UI.SettingsActivity"
+            android:name=".UI.SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
-        <activity
+        <fragment
             android:name=".UI.HelpFragment"
             android:label="@string/title_activity_help" >
+        </fragment>
+        <activity
+            android:name=".UI.AddMedicamentActivity"
+            android:label="@string/title_activity_add_medicament" >
         </activity>
     </application>
 
