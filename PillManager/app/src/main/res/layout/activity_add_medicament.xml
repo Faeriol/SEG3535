@@ -1,0 +1,237 @@
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="ca.uottawa.site.seg23525.projet.drmario.UI.AddMedicamentActivity"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/addmed_layout"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="All fields with * are required"
+            android:id="@+id/requirement_msg"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Medicament Name* :"
+            android:id="@+id/med_name_text"
+            android:layout_marginTop="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+
+
+        <EditText   android:textColor="@android:color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/med_name_edit"
+            android:layout_alignBottom="@+id/med_name_text"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/med_name_text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Dosage :"
+            android:id="@+id/dosage_text"
+            android:layout_marginTop="@dimen/add_med_margin"
+            android:layout_below="@+id/med_name_text"
+            android:layout_alignParentStart="true" />
+
+        <EditText   android:textColor="@android:color/black"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/dosage_edit"
+            android:layout_alignBottom="@+id/dosage_text"
+            android:layout_toEndOf="@+id/dosage_text"
+            android:elegantTextHeight="false"
+            android:inputType="numberDecimal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/dosage_unit"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:paddingLeft="10dp"
+            android:text="mg"
+            android:layout_alignBottom="@+id/dosage_text"
+            android:layout_toEndOf="@+id/dosage_edit" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Common Name :"
+            android:id="@+id/common_name_text"
+            android:layout_marginTop="@dimen/add_med_margin"
+            android:layout_below="@+id/dosage_text"
+            android:layout_alignParentStart="true" />
+
+        <EditText   android:textColor="@android:color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/common_name_edit"
+            android:layout_alignBottom="@+id/common_name_text"
+            android:layout_toEndOf="@+id/common_name_text"
+            android:layout_alignParentEnd="true"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Brand* :"
+            android:id="@+id/brand_text"
+            android:layout_marginTop="@dimen/add_med_margin"
+            android:layout_below="@+id/common_name_text"
+            android:layout_alignParentStart="true" />
+
+        <EditText   android:textColor="@android:color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/brand_edit"
+            android:layout_alignBottom="@+id/brand_text"
+            android:layout_toEndOf="@+id/brand_text"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Picture : "
+            android:id="@+id/picture_text"
+            android:layout_below="@id/brand_text"
+            android:layout_marginTop="@dimen/add_med_margin"
+            android:layout_alignParentStart="true" />
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/image_med"
+            android:src="@mipmap/ic_launcher"
+            android:layout_alignTop="@+id/picture_text"
+            android:layout_toEndOf="@+id/picture_text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Time* : "
+            android:id="@+id/time_text"
+            android:layout_below="@+id/image_med"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="@dimen/add_med_margin" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/add_time"
+            android:src="@drawable/ic_action_add_circle"
+            android:onClick="addTime"
+            android:layout_alignTop="@+id/time_text"
+            android:layout_toEndOf="@+id/time_text" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sunday"
+            android:id="@+id/date1"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_below="@+id/add_time"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="@dimen/add_med_margin" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MONDAY"
+            android:id="@+id/date2"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_alignTop="@+id/date1"
+            android:layout_toEndOf="@+id/time_text" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TUESDAY"
+            android:id="@+id/date3"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_alignTop="@+id/date2"
+            android:layout_alignStart="@+id/dosage_unit" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wednesday"
+            android:id="@+id/date4"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_alignTop="@+id/date3"
+            android:layout_toEndOf="@+id/save_med" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thursday"
+            android:id="@+id/date5"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_below="@+id/date1"
+            android:layout_toStartOf="@+id/image_med" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Friday"
+            android:id="@+id/date6"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_below="@+id/date2"
+            android:layout_alignEnd="@+id/dosage_edit" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Saturday"
+            android:id="@+id/date7"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_below="@id/date3"
+            android:layout_toRightOf="@id/date6"
+            android:layout_marginLeft="25dp"
+            />
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:id="@+id/save_med"
+            android:layout_below="@id/date6"
+            android:textColor="@color/mdtp_white"
+            android:background="@drawable/savebtn_selector"
+            android:layout_marginTop="@dimen/add_med_margin"
+            android:onClick="onSave"
+            android:layout_centerHorizontal="true"
+            />
+
+    </RelativeLayout>
+</ScrollView>
