@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Dosage :"
+            android:text="Dosage* :"
             android:id="@+id/dosage_text"
             android:layout_marginTop="@dimen/add_med_margin"
             android:layout_below="@+id/med_name_text"
@@ -96,7 +96,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Brand* :"
+            android:text="Brand :"
             android:id="@+id/brand_text"
             android:layout_marginTop="@dimen/add_med_margin"
             android:layout_below="@+id/common_name_text"
@@ -124,7 +124,8 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:id="@+id/image_med"
-            android:src="@mipmap/ic_launcher"
+            android:src="@drawable/ic_action_camera_alt"
+            android:onClick="getPhoto"
             android:layout_alignTop="@+id/picture_text"
             android:layout_toEndOf="@+id/picture_text" />
 

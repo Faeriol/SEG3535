@@ -1,9 +1,14 @@
 package ca.uottawa.site.seg23525.projet.drmario.UI;
 
 import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,13 +25,18 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import ca.uottawa.site.seg23525.projet.drmario.R;
+import ca.uottawa.site.seg23525.projet.drmario.data.persist.SQLite.DAO;
 
 public class AddMedicamentActivity extends Activity  implements TimePickerDialog.OnTimeSetListener {
+
+    static final int REQUEST_IMAGE_CAPTURE = 1;
 
     private EditText medName;
     private EditText dosage;
     private EditText common_name;
     private EditText brand;
+    private ImageView medImage;
+    private DAO dao;
 
     private RelativeLayout rlayout;
 
@@ -46,6 +56,9 @@ public class AddMedicamentActivity extends Activity  implements TimePickerDialog
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_medicament);
         getActionBar().setDisplayHomeAsUpEnabled(true);
+
+        dao = new DAO(this.getApplicationContext());
+        dao.open();
 
         times = new ArrayList<TextView>();
         times.add((TextView) findViewById(R.id.time_text));
@@ -67,6 +80,12 @@ public class AddMedicamentActivity extends Activity  implements TimePickerDialog
         for(int i=0; i<WEEK; i++){
             dates[i].setOnClickListener(new DateClickListener(i));
         }
+
+        medName = (EditText) findViewById(R.id.med_name_edit);
+        dosage  = (EditText) findViewById(R.id.dosage_edit);
+        common_name = (EditText) findViewById(R.id.common_name_edit);
+        brand = (EditText) findViewById(R.id.brand_edit);
+        medImage = (ImageView) findViewById(R.id.image_med);
 
     }
 
@@ -96,6 +115,28 @@ public class AddMedicamentActivity extends Activity  implements TimePickerDialog
 
         return super.onOptionsItemSelected(item);
     }
+
+
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+
+    public void getPhoto(View view){
+        dispatchTakePictureIntent();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            medImage.setImageBitmap(imageBitmap);
+        }
+    }
+
 
     public void addTime(View view){
         showTimePicker();
@@ -139,10 +180,6 @@ public class AddMedicamentActivity extends Activity  implements TimePickerDialog
         }
     }
 
-    public void onSave(View view){
-        //
-    }
-
     public static int dpToPx(int dp)
     {
         return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
@@ -177,5 +214,56 @@ public class AddMedicamentActivity extends Activity  implements TimePickerDialog
         }
 
     };
+
+    public void onSave(View view){
+
+        String errorMessage ="";
+        boolean flag=false;
+        boolean error=false;
+
+        for(int i=0;i<WEEK;i++){
+            if(dateChosen[i]){
+                flag=true;
+            }
+        }
+
+        if(medName.getText().toString().matches("")){
+            error=true;
+            errorMessage = "Please specify a Medicament Name";
+        }else if(dosage.getText().toString().matches("")){
+            errorMessage = "Please specify a value for the dosage";
+            error=true;
+        }else if(times.size()<2){
+            error=true;
+            errorMessage = "Please specify a time value for the reminder";
+        }else if(!flag){
+            errorMessage = "Please chose a date";
+            error=true;
+        }
+
+        if(error){
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this,R.style.Base_Theme_AppCompat_Light_Dialog_Alert);
+
+            // set title
+            alertDialogBuilder.setTitle("Incomplete Form");
+
+            // set dialog message
+            alertDialogBuilder
+                    .setMessage(errorMessage)
+                    .setCancelable(true)
+                    .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+            // create alert dialog
+            AlertDialog alertDialog = alertDialogBuilder.create();
+
+            // show it
+            alertDialog.show();
+        }
+
+    }
 
 }
