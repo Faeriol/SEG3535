@@ -25,9 +25,7 @@ public class IntakeHistoryFragment extends DAOListFragment {
         listView = (ListView) rootView.findViewById(android.R.id.list);
 
         // Defined Array values to show in ListView
-        String[] values = new String[] { "Please populate me",
-                "With stupid data that makes sense",
-                "because i am not sure what to put"
+        String[] values = new String[] { "July 25th: Reactine forgotten", "July 26th: Reactine delayed for 1h"
         };
 
         // Define a new Adapter
