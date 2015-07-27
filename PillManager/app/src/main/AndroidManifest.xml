@@ -4,7 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-feature android:name="android.hardware.camera"
+
+    <uses-feature
+        android:name="android.hardware.camera"
         android:required="true" />
 
     <application
@@ -21,6 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <fragment
             android:name=".UI.DrugManageFragment"
             android:label="@string/title_activity_drug_manage" >
@@ -42,14 +45,17 @@
             android:name=".UI.PrescriptionHistoryFragment"
             android:label="@string/title_activity_prescription_history" >
         </fragment>
+
         <activity
             android:name=".UI.SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
+
         <fragment
             android:name=".UI.HelpFragment"
             android:label="@string/title_activity_help" >
         </fragment>
+
         <activity
             android:name=".UI.AddMedicamentActivity"
             android:label="@string/title_activity_add_medicament" >

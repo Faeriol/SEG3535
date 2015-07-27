@@ -44,6 +44,8 @@ public class AddMedicamentActivity extends Activity  implements TimePickerDialog
     private DAO dao;
 
     private RelativeLayout rlayout;
+    private String session;
+    private int positionMed;
 
     private ArrayList<TextView> times;
     private ImageView addTime;
@@ -60,10 +62,13 @@ public class AddMedicamentActivity extends Activity  implements TimePickerDialog
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_medicament);
+
+
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         dao = new DAO(this.getApplicationContext());
         dao.open();
+
 
         times = new ArrayList<TextView>();
         times.add((TextView) findViewById(R.id.time_text));
@@ -92,12 +97,25 @@ public class AddMedicamentActivity extends Activity  implements TimePickerDialog
         brand = (EditText) findViewById(R.id.brand_edit);
         medImage = (ImageView) findViewById(R.id.image_med);
 
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            session = extras.getString("Session");
+            if(session.matches("Edit")){
+                positionMed = extras.getInt("Position");
+                PrescribedMedication medEdit = dao.getAllPrescribedMedication().get(positionMed);
+                dosage.setText("" +medEdit.getDosage());
+                medName.setText(medEdit.getMedication().getName());
+                common_name.setText(medEdit.getMedication().getCommonName());
+                brand.setText(medEdit.getMedication().getBrand().getName());
+            }
+
+        }
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_add_medicament, menu);
         return true;
     }
 
@@ -148,7 +166,9 @@ public class AddMedicamentActivity extends Activity  implements TimePickerDialog
     }
 
     @Override
-    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
+    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int min) {
+        String minute = String.format("%02d", min);
+
         if(editId !=0){
             if(editId>1)
                 times.get(editId).setText("| " + hourOfDay + ":" + minute);
@@ -269,16 +289,20 @@ public class AddMedicamentActivity extends Activity  implements TimePickerDialog
             alertDialog.show();
         }else{
 
-            Medication me = new Medication();
-            me.setName(medName.getText().toString());
-            me.setCommonName(common_name.getText().toString());
-            BrandMedication br = new BrandMedication(me, new Brand(brand.getText().toString()));
+            if(session.matches("Add")) {
+                Medication me = new Medication();
+                me.setName(medName.getText().toString());
+                me.setCommonName(common_name.getText().toString());
+                BrandMedication br = new BrandMedication(me, new Brand(brand.getText().toString()));
 
-            PrescribedMedication med = new PrescribedMedication(br, Integer.parseInt(dosage.getText().toString()));
-            dao.insertPrescribedMedicament(med);
+                PrescribedMedication med = new PrescribedMedication(br, Integer.parseInt(dosage.getText().toString()));
+                dao.insertPrescribedMedicament(med);
 
-            Toast.makeText(this, "Medicament added", Toast.LENGTH_SHORT);
-            finish();
+                Toast.makeText(this, "Medicament added", Toast.LENGTH_SHORT);
+                finish();
+            }else{
+                Toast.makeText(this, "Not yet available", Toast.LENGTH_SHORT);
+            }
         }
 
     }

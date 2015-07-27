@@ -111,6 +111,7 @@ public class DrugManageFragment extends DAOListFragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AddMedicamentActivity.class);
+                intent.putExtra("Session", "Add");
                 startActivity(intent);
             }
         });
@@ -163,7 +164,10 @@ public class DrugManageFragment extends DAOListFragment {
             v.findViewById(R.id.edit_med).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(getActivity(), "Edit touched", Toast.LENGTH_SHORT);
+                    Intent intent = new Intent(getActivity(), AddMedicamentActivity.class);
+                    intent.putExtra("Session", "Edit");
+                    intent.putExtra("position", position);
+                    startActivity(intent);
                 }
             });
             return v;

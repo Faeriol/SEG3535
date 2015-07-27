@@ -23,5 +23,8 @@
     <color name="ripple">#ff2426f0</color>
     <color name="accent_pressed">#C2185B</color>
 
+    <color name="mdtp_accent_color">#2196F3</color>
+    <color name="mdtp_accent_color_dark">#1976D2</color>
+
 
 </resources>
