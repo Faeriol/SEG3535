@@ -65,6 +65,7 @@ public class DrugManageFragment extends DAOListFragment {
                 ((SwipeLayout) (medList.getChildAt(position - medList.getFirstVisiblePosition()))).open(true);
             }
         });
+
         medList.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -132,7 +133,7 @@ public class DrugManageFragment extends DAOListFragment {
         }
 
         @Override
-        public View generateView(int position, ViewGroup parent) {
+        public View generateView(final int position, ViewGroup parent) {
             View v = LayoutInflater.from(mContext).inflate(R.layout.medication_item, null);
             SwipeLayout swipeLayout = (SwipeLayout)v.findViewById(getSwipeLayoutResourceId(position));
             swipeLayout.addSwipeListener(new SimpleSwipeListener() {
@@ -150,7 +151,8 @@ public class DrugManageFragment extends DAOListFragment {
             v.findViewById(R.id.delete).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(mContext, "click delete", Toast.LENGTH_SHORT).show();
+                    meds.remove(position);
+                    notifyDataSetChanged();
                 }
             });
             return v;
