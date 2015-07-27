@@ -40,6 +40,7 @@ public class DrugManageFragment extends DAOListFragment {
     private ListView medList;
     private List<PrescribedMedication> meds;
     private ListViewAdapter adapter;
+    private SwipeLayout swipe;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,7 +49,6 @@ public class DrugManageFragment extends DAOListFragment {
         View rootView = inflater.inflate(R.layout.fragment_drug_manage, container, false);
 
         checkDAO();
-
 
         medList = (ListView) rootView.findViewById(android.R.id.list);
         System.out.println(medList.toString());
@@ -135,7 +135,10 @@ public class DrugManageFragment extends DAOListFragment {
         @Override
         public View generateView(final int position, ViewGroup parent) {
             View v = LayoutInflater.from(mContext).inflate(R.layout.medication_item, null);
-            SwipeLayout swipeLayout = (SwipeLayout)v.findViewById(getSwipeLayoutResourceId(position));
+            final SwipeLayout swipeLayout = (SwipeLayout)v.findViewById(getSwipeLayoutResourceId(position));
+            swipeLayout.setShowMode(SwipeLayout.ShowMode.PullOut);
+            swipeLayout.addDrag(SwipeLayout.DragEdge.Right, v.findViewById(R.id.right_view));
+            swipeLayout.addDrag(SwipeLayout.DragEdge.Left, v.findViewById(R.id.left_view));
             swipeLayout.addSwipeListener(new SimpleSwipeListener() {
                 @Override
                 public void onOpen(SwipeLayout layout) {
@@ -152,7 +155,15 @@ public class DrugManageFragment extends DAOListFragment {
                 @Override
                 public void onClick(View view) {
                     meds.remove(position);
+                    swipeLayout.close();
                     notifyDataSetChanged();
+                }
+            });
+
+            v.findViewById(R.id.edit_med).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getActivity(), "Edit touched", Toast.LENGTH_SHORT);
                 }
             });
             return v;
