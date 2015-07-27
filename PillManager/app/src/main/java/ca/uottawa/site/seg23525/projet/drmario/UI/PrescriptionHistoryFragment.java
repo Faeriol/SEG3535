@@ -23,7 +23,7 @@ public class PrescriptionHistoryFragment extends DAOListFragment {
 
         View rootView = inflater.inflate(R.layout.fragment_prescription_history, container, false);
 
-        listView = (ListView) rootView.findViewById(R.id.prescription_list);
+        listView = (ListView) rootView.findViewById(android.R.id.list);
 
         // Defined Array values to show in ListView
         String[] values = new String[] { "Please populate me",

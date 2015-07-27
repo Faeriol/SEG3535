@@ -7,7 +7,7 @@
     tools:context="ca.uottawa.site.seg23525.projet.drmario.UI.PrescriptionHistoryFragment">
 
     <ListView
-        android:id="@+id/prescription_list"
+        android:id="@id/android:list"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

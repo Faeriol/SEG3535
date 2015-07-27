@@ -22,7 +22,7 @@ public class IntakeHistoryFragment extends DAOListFragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_intake_history, container, false);
-        listView = (ListView) rootView.findViewById(R.id.intake_list);
+        listView = (ListView) rootView.findViewById(android.R.id.list);
 
         // Defined Array values to show in ListView
         String[] values = new String[] { "Please populate me",
