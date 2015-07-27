@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
@@ -276,6 +277,7 @@ public class AddMedicamentActivity extends Activity  implements TimePickerDialog
             PrescribedMedication med = new PrescribedMedication(br, Integer.parseInt(dosage.getText().toString()));
             dao.insertPrescribedMedicament(med);
 
+            Toast.makeText(this, "Medicament added", Toast.LENGTH_SHORT);
             finish();
         }
 
