@@ -25,6 +25,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import ca.uottawa.site.seg23525.projet.drmario.R;
+import ca.uottawa.site.seg23525.projet.drmario.data.model.Medical.Brand;
+import ca.uottawa.site.seg23525.projet.drmario.data.model.Medical.BrandMedication;
+import ca.uottawa.site.seg23525.projet.drmario.data.model.Medical.Medication;
+import ca.uottawa.site.seg23525.projet.drmario.data.model.Medical.PrescribedMedication;
 import ca.uottawa.site.seg23525.projet.drmario.data.persist.SQLite.DAO;
 
 public class AddMedicamentActivity extends Activity  implements TimePickerDialog.OnTimeSetListener {
@@ -262,6 +266,17 @@ public class AddMedicamentActivity extends Activity  implements TimePickerDialog
 
             // show it
             alertDialog.show();
+        }else{
+
+            Medication me = new Medication();
+            me.setName(medName.getText().toString());
+            me.setCommonName(common_name.getText().toString());
+            BrandMedication br = new BrandMedication(me, new Brand(brand.getText().toString()));
+
+            PrescribedMedication med = new PrescribedMedication(br, Integer.parseInt(dosage.getText().toString()));
+            dao.insertPrescribedMedicament(med);
+
+            finish();
         }
 
     }

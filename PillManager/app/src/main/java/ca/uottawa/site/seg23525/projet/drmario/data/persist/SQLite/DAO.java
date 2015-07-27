@@ -1,5 +1,6 @@
 package ca.uottawa.site.seg23525.projet.drmario.data.persist.SQLite;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -145,6 +146,27 @@ public class DAO {
         // make sure to close the cursor
         cursor.close();
         return comments;
+    }
+
+    public void insertPrescribedMedicament (PrescribedMedication med){
+        ContentValues values = new ContentValues();
+        values.put("name", med.getMedication().getName());
+        values.put("common_name", med.getMedication().getCommonName());
+        long medId = db.insert("Medication", null, values);
+
+        ContentValues values2 = new ContentValues();
+        values2.put("name", med.getMedication().getBrand().getName());
+        long brandId = db.insert("Brand", null, values2);
+
+        ContentValues values3 = new ContentValues();
+        values3.put("med_id", medId);
+        values3.put("brand_id", brandId);
+        long med_brand_id = db.insert("Brand_Medication", null, values3);
+
+        ContentValues values4 = new ContentValues();
+        values4.put(prescribedMedicationColumns[1],med_brand_id);
+        values4.put(prescribedMedicationColumns[2],med.getDosage());
+        db.insert("Prescribed_Medication", null, values4);
     }
 
     private PrescribedMedication cursorToPrescribedMedication(Cursor cursor) {

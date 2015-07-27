@@ -3,7 +3,7 @@ package ca.uottawa.site.seg23525.projet.drmario.data.model.Medical;
 /**
  * A specific Brand of a Medication
  */
-public abstract class BrandMedication extends Medication {
+public class BrandMedication extends Medication {
     private Brand brand;
     private byte[] picture;
 

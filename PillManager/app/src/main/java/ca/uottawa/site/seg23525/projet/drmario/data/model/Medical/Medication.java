@@ -6,7 +6,7 @@ import java.util.Set;
  * Represents a Medication
  * @author faeriol
  */
-public abstract class Medication {
+public class Medication {
 
     private Set<Medication> interactions;
     private Set<Ailment> threats;

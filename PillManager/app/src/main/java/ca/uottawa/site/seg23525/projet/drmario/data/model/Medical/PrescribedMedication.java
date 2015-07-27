@@ -6,7 +6,7 @@ import android.provider.CalendarContract;
  * Represents some prescribed medication
  * @author faeriol
  */
-public abstract class PrescribedMedication {
+public class PrescribedMedication {
     private BrandMedication medication;
     private float dosage; // Always in milligrams... DEMO
     private CalendarContract.Events schedule;
