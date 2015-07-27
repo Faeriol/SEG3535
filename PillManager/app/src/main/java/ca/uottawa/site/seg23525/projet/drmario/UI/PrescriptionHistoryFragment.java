@@ -25,11 +25,14 @@ public class PrescriptionHistoryFragment extends DAOListFragment {
 
         listView = (ListView) rootView.findViewById(R.id.prescription_list);
 
+        String[] values = new String[] { "July 1st: Reactine Added. Dosage: 20mg",
+                                "July 2nd: Some other drug Added. Dosage: 30mg",
+                                "July 4th: Dosage of Some other drug change to: 25mg"};
         // Defined Array values to show in ListView
-        String[] values = new String[] { "Please populate me",
+        /*String[] values = new String[] { "Please populate me",
                 "With stupid data that makes sense",
                 "because i am not sure what to put"
-        };
+        };*/
 
         // Define a new Adapter
         // First parameter - Context
