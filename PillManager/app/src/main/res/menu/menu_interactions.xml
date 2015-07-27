@@ -5,6 +5,5 @@
         android:id="@+id/action_interaction_search"
         android:title="@string/action_interaction_search"
         android:icon="@drawable/abc_ic_search_api_mtrl_alpha"
-        android:actionViewClass="android.widget.SearchView"
         android:showAsAction="always"/>
 </menu>

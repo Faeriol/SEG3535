@@ -1,0 +1,5 @@
+<root>
+  <item name='android.R.layout simple_list_item_1'>
+    <annotation name='org.jetbrains.annotations.Nullable' />
+  </item>
+</root>
