@@ -6,7 +6,8 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="ca.uottawa.site.seg23525.projet.drmario.UI.InteractionsFragment">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
+    <TextView android:text="Given your prescription, it is not recommended to consume:\n - Alcohol \n - Orange juice when taking your Reactine" android:layout_width="wrap_content"
+        android:textSize="24sp"
         android:layout_height="wrap_content" />
 
 </RelativeLayout>
